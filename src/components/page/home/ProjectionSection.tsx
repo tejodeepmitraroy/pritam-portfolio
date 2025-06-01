@@ -1,15 +1,13 @@
+"use client"
 import AnimatedSection from '@/components/animated-section'
 import SectionHeader from '@/components/section-header'
 import { motion } from 'framer-motion';
 import React from 'react'
-import { useTheme } from '@/context/theme-context';
 
 const ProjectionSection = () => {
-      const { theme } = useTheme();
-      const isLight = theme === "light";
   return (
     <AnimatedSection delay={0.2}>
-        <SectionHeader title="PROJECTS" theme={theme} />
+        <SectionHeader title="PROJECTS"  />
 
         <div className="grid grid-cols-2 gap-4 max-w-6xl mx-auto">
           {[1, 2, 3, 4].map((item, index) => (

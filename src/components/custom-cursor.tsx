@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
 
     const handleMouseOver = (e: MouseEvent) => {
       if (
@@ -19,20 +19,20 @@ export default function CustomCursor() {
         (e.target as HTMLElement).closest("a") ||
         (e.target as HTMLElement).closest("button")
       ) {
-        setIsHovering(true)
+        setIsHovering(true);
       } else {
-        setIsHovering(false)
+        setIsHovering(false);
       }
-    }
+    };
 
-    window.addEventListener("mousemove", handleMouseMove)
-    document.addEventListener("mouseover", handleMouseOver)
+    window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseover", handleMouseOver);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-      document.removeEventListener("mouseover", handleMouseOver)
-    }
-  }, [])
+      window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseover", handleMouseOver);
+    };
+  }, []);
 
   const variants = {
     default: {
@@ -47,14 +47,14 @@ export default function CustomCursor() {
       height: 48,
       width: 48,
     },
-  }
+  };
 
   return (
     <motion.div
-      className="fixed top-0 left-0 rounded-full border-2 border-[#2563EB] pointer-events-none z-50 mix-blend-difference"
+      className="fixed top-0 left-0 rounded-full border-2 border-[#2563EB] dark:border-[#d4ff00] pointer-events-none z-50 mix-blend-difference"
       variants={variants}
       animate={isHovering ? "hover" : "default"}
       transition={{ type: "spring", stiffness: 500, damping: 28 }}
     />
-  )
+  );
 }

@@ -43,7 +43,7 @@ export default function NavigationMenu({ isOpen, onClose }: NavigationMenuProps)
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 bg-black text-white z-50 overflow-hidden"
+          className="fixed inset-0 bg-[#2563EB] dark:bg-black text-white z-50 overflow-hidden"
           variants={menuVariants}
           initial="hidden"
           animate="visible"
@@ -67,14 +67,14 @@ export default function NavigationMenu({ isOpen, onClose }: NavigationMenuProps)
               </div>
             </div>
 
-            <div className="flex flex-col space-y-6 text-4xl font-bold">
+            <div className="flex flex-col space-y-4 text-4xl font-bold">
               {menuItems.map((item) => (
                 <Link
                   key={item.path}
                   href={item.path}
                   className={`${
                     pathname === item.path ? "text-[#d4ff00]" : "text-white"
-                  } hover:text-[#d4ff00] transition-colors`}
+                  }  hover:text-[#d4ff00] transition-colors`}
                   onClick={onClose}
                 >
                   {item.name}
@@ -83,9 +83,9 @@ export default function NavigationMenu({ isOpen, onClose }: NavigationMenuProps)
             </div>
 
             <div className="mt-auto">
-              <div className="text-white/70 text-sm">San Francisco, CA, USA</div>
+              <div className="text-white/70 text-base">San Francisco, CA, USA</div>
               <div className="text-[#d4ff00] mb-1 mt-2">lucas@email.com</div>
-              <div className="text-white/70 text-sm">www.framer.website</div>
+              <div className="text-white/70 text-base">www.framer.website</div>
             </div>
           </div>
         </motion.div>

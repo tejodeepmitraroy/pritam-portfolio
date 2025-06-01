@@ -1,30 +1,13 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import { ArrowDown } from "lucide-react";
-import { motion } from "framer-motion";
 import CustomCursor from "@/components/custom-cursor";
-import CustomCursorDark from "@/components/custom-cursor-dark";
-import SectionHeader from "@/components/section-header";
-import AnimatedSection from "@/components/animated-section";
 import Navigation from "@/components/navigation";
-import { useTheme } from "@/context/theme-context";
 import ContactForm from "@/components/contact-form";
 import HeroSection from "@/components/page/home/HeroSection";
 import ProjectionSection from "@/components/page/home/ProjectionSection";
 import ExperienceSection from "@/components/page/home/ExperienceSection";
 import Footer from "@/components/Footer";
+import AboutSection from "@/components/page/home/AboutSection";
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
-  const { theme } = useTheme();
-  const isLight = theme === "light";
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   // Text animation variants
   const letterVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -49,44 +32,33 @@ export default function Home() {
     }),
   };
 
-  
-
-  // Don't render anything until client-side hydration is complete
-  if (!mounted) {
-    return <div className="min-h-screen bg-black"></div>;
-  }
-
   return (
     <main
-      className={`min-h-screen dark:bg-black ${isLight ? "bg-gray-100" : "bg-black"} ${
-        isLight ? "text-gray-800" : "text-white"
-      } overflow-hidden`}
+      className={`min-h-screen bg-gray-100 dark:bg-black text-gray-800 dark:text-white  overflow-hidden`}
     >
       {/* Custom Cursor */}
-      {isLight ? <CustomCursor /> : <CustomCursorDark />}
+      <CustomCursor />
 
       {/* Header */}
       <Navigation />
-      <HeroSection/>
-
-      
+      <HeroSection />
 
       {/* About Section */}
-      
+      <AboutSection />
 
       {/* Projects Section */}
-      <ProjectionSection/>
+      <ProjectionSection />
 
       {/* Experience Section */}
-      <ExperienceSection/>
+      <ExperienceSection />
 
       {/* Tools Section */}
-      
+
       {/* Contact Form */}
       <ContactForm />
 
       {/* Footer */}
-      <Footer/>
+      <Footer />
     </main>
   );
 }
