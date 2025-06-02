@@ -1,12 +1,7 @@
 import type React from "react"
 import "./globals.css"
 import type { Metadata } from "next"
-import { Big_Shoulders_Display } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider";
-// import { ThemeProvider } from "@/context/theme-context"
-
-
-
 
 export const metadata: Metadata = {
   title: "Pritam Majumder - Portfolio",

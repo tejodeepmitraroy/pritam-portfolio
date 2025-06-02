@@ -12,7 +12,7 @@ interface AnimatedSectionProps {
 export default function AnimatedSection({ children, delay = 0, className = "" }: AnimatedSectionProps) {
   return (
     <motion.section
-      className={`px-6 py-12 ${className}`}
+      className={`px-6 py-12 max-w-3xl lg:max-w-5xl mx-auto  ${className}`}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}

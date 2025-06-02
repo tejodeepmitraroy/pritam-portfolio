@@ -46,7 +46,7 @@
 
 @theme {
   --font-dm-sans: "DM Sans", "sans-serif";
-  --font-big-shoulders: "Big Shoulders Display", "sans-serif";
+  --font-big-shoulders: "Big Shoulders", "sans-serif";
 }
 
 
@@ -125,11 +125,11 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-dm-sans
   }
 
   h1{
-    @apply text-[10rem] font-bold font-big-shoulders;
+    @apply text-[12rem] font-bold font-big-shoulders;
   }
   h2{
     @apply text-3xl font-bold font-big-shoulders;

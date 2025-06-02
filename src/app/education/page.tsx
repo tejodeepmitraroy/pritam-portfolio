@@ -5,7 +5,6 @@ import { motion } from "framer-motion"
 import Navigation from "@/components/navigation"
 import { useTheme } from "@/context/theme-context"
 import CustomCursor from "@/components/custom-cursor"
-import CustomCursorDark from "@/components/custom-cursor-dark"
 import ContactForm from "@/components/contact-form"
 
 export default function Education() {
@@ -77,7 +76,7 @@ export default function Education() {
 
   return (
     <div className={`min-h-screen ${isLight ? "bg-gray-100" : "bg-black"} overflow-hidden`}>
-      {isLight ? <CustomCursor /> : <CustomCursorDark />}
+      <CustomCursor /> 
 
       <Navigation />
 

@@ -1,16 +1,33 @@
-"use client"
-import React from 'react'
+"use client";
+import React from "react";
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/animated-section";
 import SectionHeader from "@/components/section-header";
+import { Separator } from "@/components/ui/separator";
 
 const AboutSection = () => {
-
+  const skills = [
+    {
+      name: "Frontend",
+      percent: 82,
+      tools: "HTML, CSS, JavaScript",
+    },
+    {
+      name: "UI/UX, Prototyping",
+      percent: 82,
+      tools: "Figma, Adobe XD",
+    },
+    {
+      name: "Stack",
+      percent: 82,
+      tools: "React, Node, Express",
+    },
+  ];
   return (
-    <AnimatedSection className="max-w-6xl mx-auto">
+    <AnimatedSection className="">
       <SectionHeader title="ABOUT" />
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <section className="w-full grid grid-cols-2 gap-6">
         <motion.div
           className={`text-sm text-gray-600 dark:text-white/80 leading-relaxed`}
           initial={{ opacity: 0, x: -20 }}
@@ -24,70 +41,51 @@ const AboutSection = () => {
             experience.
           </p>
         </motion.div>
-        <motion.div
-          className={`text-sm text-gray-600 dark:text-white/80 leading-relaxed`}
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-        >
-          <p className="mb-4">
-            I hold a Bachelor of Science in Computer Science and a Master's
-            degree in Interaction Design. I've completed my studies at
-            prestigious institutions that equipped me with a solid foundation in
-            both design and development, allowing me to bridge the gap between
-            creativity and functionality.
-          </p>
-        </motion.div>
-      </div>
 
-      {/* Skills */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 max-w-6xl mx-auto">
-        <motion.div
-          className={`bg-[#2563EB] dark:bg-[#d4ff00] p-4 rounded-lg overflow-hidden relative`}
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          whileHover={{ y: -5 }}
-        >
-          <div className="text-sm mb-1">Frontend</div>
-          <div className={`text-xs text-blue-200 dark:text-black/70`}>
-            HTML, CSS, JavaScript
-          </div>
-          <div className="text-3xl font-bold mt-2">82%</div>
-        </motion.div>
-        <motion.div
-          className={`bg-[#2563EB] dark:bg-[#d4ff00] p-4 rounded-lg overflow-hidden relative`}
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          whileHover={{ y: -5 }}
-        >
-          <div className="text-sm mb-1">Design</div>
-          <div className={`text-xs text-blue-200 dark:text-black/70`}>
-            UI/UX, Prototyping
-          </div>
-          <div className="text-3xl font-bold mt-2">74%</div>
-        </motion.div>
-        <motion.div
-          className={`bg-[#2563EB] dark:bg-[#d4ff00] p-4 rounded-lg overflow-hidden relative`}
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          whileHover={{ y: -5 }}
-        >
-          <div className="text-sm mb-1">Stack</div>
-          <div className={`text-xs text-blue-200 dark:text-black/70`}>
-            React, Node, Express
-          </div>
-          <div className="text-3xl font-bold mt-2">80%</div>
-        </motion.div>
-      </div>
+        {/* Skills */}
+        <section className="space-y-5 mt-8 w-full">
+          <motion.div
+            className={`text-sm text-gray-600 dark:text-white/80 leading-relaxed`}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+          >
+            <p className="mb-4">
+              I hold a Bachelor of Science in Computer Science and a Master's
+              degree in Interaction Design. I've completed my studies at
+              prestigious institutions that equipped me with a solid foundation
+              in both design and development, allowing me to bridge the gap
+              between creativity and functionality.
+            </p>
+          </motion.div>
+
+          {skills.map((skill, index) => (
+            <motion.div
+              className={`bg-[#2563EB] dark:bg-[#d4ff00] p-6 flex items-center justify-between rounded-lg w-full `}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              whileHover={{ y: -5 }}
+              key={skill.name}
+            >
+              <section className="w-full">
+                <h3 className="mb-1 text-blue-200">{skill.name}</h3>
+                <div className={`text-xs text-blue-200 dark:text-black/70`}>
+                  {skill.tools}
+                </div>
+              </section>
+
+              <section className="text-3xl border-l-2 border-l-white/30 flex items-center justify-center text-white/30 w-full font-bold mt-2">
+                {skill.percent}%
+              </section>
+            </motion.div>
+          ))}
+        </section>
+      </section>
     </AnimatedSection>
   );
-}
+};
 
-export default AboutSection
+export default AboutSection;

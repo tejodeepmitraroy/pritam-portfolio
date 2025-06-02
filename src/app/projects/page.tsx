@@ -5,7 +5,6 @@ import { motion } from "framer-motion"
 import Navigation from "@/components/navigation"
 import { useTheme } from "@/context/theme-context"
 import CustomCursor from "@/components/custom-cursor"
-import CustomCursorDark from "@/components/custom-cursor-dark"
 import ContactForm from "@/components/contact-form"
 
 export default function Projects() {
@@ -60,8 +59,8 @@ export default function Projects() {
   if (!mounted) return null
 
   return (
-    <div className={`min-h-screen ${isLight ? "bg-gray-100" : "bg-black"} overflow-hidden`}>
-      {isLight ? <CustomCursor /> : <CustomCursorDark />}
+    <main className={`min-h-screen ${isLight ? "bg-gray-100" : "bg-black"} overflow-hidden`}>
+      <CustomCursor /> 
 
       <Navigation />
 
@@ -150,6 +149,6 @@ export default function Projects() {
           <div>BEHANCE</div>
         </motion.div>
       </footer>
-    </div>
+    </main>
   )
 }

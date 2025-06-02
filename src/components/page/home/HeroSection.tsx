@@ -18,15 +18,23 @@ const HeroSection = () => {
           CRAFTING DIGITAL GOODS SINCE — V.2017
         </motion.p>
 
-        <motion.h1
-          className={`  text-[#2563EB] dark:text-[#3b82f6]`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="relative font-dm-sans">PRITAM</div>
-          <div className="relative font-dm-sans flex items-center justify-center">
-            <span>MA</span>
+        <h1 className={`  text-[#2563EB] dark:text-[#3b82f6]`}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="relative  "
+          >
+            PRITAM
+          </motion.div>
+          <div className="relative   flex items-center justify-center">
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              MA
+            </motion.span>
             <div className="relative w-32 h-32 mx-1 overflow-hidden rounded-full">
               <Image
                 src="/placeholder.svg?height=150&width=150"
@@ -35,9 +43,15 @@ const HeroSection = () => {
                 className="object-cover"
               />
             </div>
-            <span>JUMDER</span>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              JUMDER
+            </motion.span>
           </div>
-        </motion.h1>
+        </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}

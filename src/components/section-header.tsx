@@ -1,17 +1,15 @@
-"use client"
-import { motion } from "framer-motion"
+"use client";
+import { motion } from "framer-motion";
 
 interface SectionHeaderProps {
-  title: string
+  title: string;
 }
 
 export default function SectionHeader({ title }: SectionHeaderProps) {
-
-
   return (
     <div className="flex justify-between items-center mb-8">
       <motion.h2
-        className={`text-[#2563EB] dark:text-[#d4ff00] font-medium text-sm`}
+        className={`text-[#2563EB] dark:text-[#d4ff00]`}
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
@@ -27,5 +25,5 @@ export default function SectionHeader({ title }: SectionHeaderProps) {
         transition={{ duration: 0.7, delay: 0.2 }}
       />
     </div>
-  )
+  );
 }

@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 import Navigation from "@/components/navigation"
 import { useTheme } from "@/context/theme-context"
 import CustomCursor from "@/components/custom-cursor"
-import CustomCursorDark from "@/components/custom-cursor-dark"
+
 
 export default function Experience() {
   const [mounted, setMounted] = useState(false)
@@ -84,7 +84,7 @@ export default function Experience() {
 
   return (
     <div className="min-h-screen bg-gray-100 overflow-hidden">
-      {isLight ? <CustomCursor /> : <CustomCursorDark />}
+    <CustomCursor /> 
 
       <Navigation />
 

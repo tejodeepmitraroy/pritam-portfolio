@@ -8,7 +8,6 @@ const ProjectionSection = () => {
   return (
     <AnimatedSection delay={0.2}>
         <SectionHeader title="PROJECTS"  />
-
         <div className="grid grid-cols-2 gap-4 max-w-6xl mx-auto">
           {[1, 2, 3, 4].map((item, index) => (
             <motion.div

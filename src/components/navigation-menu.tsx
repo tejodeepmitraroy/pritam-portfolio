@@ -14,7 +14,11 @@ interface NavigationMenuProps {
 
 export default function NavigationMenu({ isOpen, onClose }: NavigationMenuProps) {
   const pathname = usePathname()
-  const { theme, toggleTheme } = useTheme()
+  const { setTheme, theme } = useTheme();
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+  
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -43,13 +47,13 @@ export default function NavigationMenu({ isOpen, onClose }: NavigationMenuProps)
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 bg-[#2563EB] dark:bg-black text-white z-50 overflow-hidden"
+          className="fixed inset-0 bg-[#2563EB]  dark:bg-black text-white z-50 overflow-hidden"
           variants={menuVariants}
           initial="hidden"
           animate="visible"
           exit="exit"
         >
-          <div className="container mx-auto p-6 h-full flex flex-col">
+          <div className="w-full max-w-6xl mx-auto p-6 h-full flex flex-col">
             <div className="flex justify-between items-center mb-12">
               <button onClick={onClose} className="text-white">
                 <X size={24} />
@@ -61,8 +65,14 @@ export default function NavigationMenu({ isOpen, onClose }: NavigationMenuProps)
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span className="font-medium">{theme === "light" ? "Dark Mode" : "Light Mode"}</span>
-                  <div className={`h-4 w-4 rounded-full ${theme === "dark" ? "bg-white" : "bg-black"}`}></div>
+                  <span className="font-medium">
+                    {theme === "light" ? "Dark Mode" : "Light Mode"}
+                  </span>
+                  <div
+                    className={`h-4 w-4 rounded-full ${
+                      theme === "dark" ? "bg-white" : "bg-black"
+                    }`}
+                  ></div>
                 </motion.button>
               </div>
             </div>
@@ -83,7 +93,9 @@ export default function NavigationMenu({ isOpen, onClose }: NavigationMenuProps)
             </div>
 
             <div className="mt-auto">
-              <div className="text-white/70 text-base">San Francisco, CA, USA</div>
+              <div className="text-white/70 text-base">
+                San Francisco, CA, USA
+              </div>
               <div className="text-[#d4ff00] mb-1 mt-2">lucas@email.com</div>
               <div className="text-white/70 text-base">www.framer.website</div>
             </div>
@@ -91,5 +103,5 @@ export default function NavigationMenu({ isOpen, onClose }: NavigationMenuProps)
         </motion.div>
       )}
     </AnimatePresence>
-  )
+  );
 }
