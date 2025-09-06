@@ -1,126 +1,68 @@
-"use client"
-import AnimatedSection from '@/components/animated-section';
-import SectionHeader from '@/components/section-header';
-import { motion } from 'framer-motion';
-import React from 'react'
+"use client";
+import AnimatedSection from "@/components/animated-section";
+import SectionHeader from "@/components/section-header";
+import { Separator } from "@/components/ui/separator";
+import { motion } from "motion/react";
+import React from "react";
 
+const ExperienceData = [
+  {
+    employer: "Company A",
+    title: "Senior UX/UI Designer",
+    date: "2020 - Present",
+    description:
+      "Lead the creation of the highly intuitive and visually appealing UI/UX designs for web and mobile applications, collaborating with developers to ensure the seamless delivery of products.",
+  },
+  {
+    employer: "Company B",
+    title: "UX/UI Designer",
+    date: "2018 - 2020",
+    description:
+      "Collaborated with the development team to transform UI/UX designs into functional commercial design solutions, ensuring a consistent brand experience across all digital touchpoints.",
+  },
+  {
+    employer: "Company C",
+    title: "Lead Product Designer",
+    date: "2016 - 2018",
+    description:
+      "Designed and implemented creative solutions that blend user needs with business goals, creating a cohesive visual system and creating smooth user experiences.",
+  },
+  {
+    employer: "Company D",
+    title: "Junior Designer",
+    date: "2014 - 2016",
+    description:
+      "Handled the creation of landing pages for various clients, creating visually appealing and user-friendly designs while collaborating with developers.",
+  },
+];
 const ExperienceSection = () => {
   return (
     <AnimatedSection delay={0.3}>
       <SectionHeader title="EXPERIENCE" />
 
-      <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <h3
-            className={`font-medium text-gray-800 dark:text-white mb-1`}
-          >
-            Senior UX/UI Designer
-          </h3>
-          <p
-            className={`text-xs mb-3 text-gray-500 dark:text-white/70`}
-          >
-            2020 - Present
-          </p>
-          <p
-            className={`text-sm text-gray-600 dark:text-white/80 leading-relaxed`}
-          >
-            Lead the creation of the highly intuitive and visually appealing
-            UI/UX designs for web and mobile applications, collaborating with
-            developers to ensure the seamless delivery of products.
-          </p>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
-          <h3
-            className={`font-medium text-gray-800 dark:text-white mb-1`}
-          >
-            UX/UI Designer
-          </h3>
-          <p
-            className={`text-gray-500 dark:text-white/70 text-xs mb-3`}
-          >
-            2018 - 2020
-          </p>
-          <p
-            className={`text-sm text-gray-600 dark:text-white/80 leading-relaxed`}
-          >
-            Collaborated with the development team to transform UI/UX designs
-            into functional commercial design solutions, ensuring a consistent
-            brand experience across all digital touchpoints.
-          </p>
-        </motion.div>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-8 mt-8 max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-        >
-          <h3
-            className={`font-medium text-gray-800 dark:text-white mb-1`}
-          >
-            Lead Product Designer
-          </h3>
-          <p
-            className={`text-gray-500 dark:text-white/70 text-xs mb-3`}
-          >
-            2016 - 2018
-          </p>
-          <p
-            className={`text-sm text-gray-600 dark:text-white/80 leading-relaxed`}
-          >
-            Designed and implemented creative solutions that blend user needs
-            with business goals, creating a cohesive visual system and creating
-            smooth user experiences.
-          </p>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-        >
-          <h3
-            className={`font-medium text-gray-800 dark:text-white mb-1`}
-          >
-            Junior Designer
-          </h3>
-          <p
-            className={`text-gray-500 dark:text-white/70 text-xs mb-3`}
-          >
-            2014 - 2016
-          </p>
-          <p
-            className={`text-sm text-gray-600 dark:text-white/80 leading-relaxed`}
-          >
-            Handled the creation of landing pages for various clients, creating
-            visually appealing and user-friendly designs while collaborating
-            with developers.
-          </p>
-        </motion.div>
+      <div className="grid md:grid-cols-2  gap-8 max-w-6xl mx-auto">
+        {ExperienceData.map((item, index) => (
+          <ExperienceCard
+            title={item.title}
+            date={item.date}
+            employer={item.employer}
+            description={item.description}
+            index={index}
+          />
+        ))}
       </div>
 
       {/* Stats */}
-      <div className="flex justify-center gap-16 mt-12 text-center max-w-6xl mx-auto">
-        <motion.div
+      <section className="  grid grid-cols-3 w-full  mt-12 text-center">
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-col gap-3 justify-start py-6 items-start border-r-2 border-gray-200 dark:border-gray-800"
         >
           <motion.div
-            className={`text-2xl font-bold text-[#2563EB] dark:text-[#d4ff00]`}
+            className={`text-5xl font-bold text-[#2563EB] dark:text-[#d4ff00]`}
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -128,22 +70,22 @@ const ExperienceSection = () => {
           >
             380+
           </motion.div>
-          <div
-            className={`text-xs text-gray-500 dark:text-white/70`}
-          >
+          <p className={` text-gray-500 dark:text-white/70`}>
             Projects
             <br />
             Completed
-          </div>
-        </motion.div>
-        <motion.div
+          </p>
+        </motion.section>
+
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
+          className="flex flex-col gap-3 border-r-2 p-6 border-gray-200 dark:border-gray-800 items-start"
         >
           <motion.div
-            className={`text-2xl font-bold text-[#2563EB] dark:text-[#d4ff00]`}
+            className={`text-5xl font-bold text-[#2563EB] dark:text-[#d4ff00]`}
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -151,22 +93,22 @@ const ExperienceSection = () => {
           >
             420+
           </motion.div>
-          <div
-            className={`text-xs text-gray-500 dark:text-white/70`}
-          >
+          <p className={`te text-gray-500 dark:text-white/70`}>
             Happy
             <br />
             Clients
-          </div>
-        </motion.div>
-        <motion.div
+          </p>
+        </motion.section>
+
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.6 }}
+          className="flex gap-3 flex-col items-start p-6"
         >
           <motion.div
-            className={`text-2xl font-bold text-[#2563EB] dark:text-[#d4ff00]`}
+            className={`text-5xl font-bold text-[#2563EB] dark:text-[#d4ff00]`}
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -174,17 +116,69 @@ const ExperienceSection = () => {
           >
             2K+
           </motion.div>
-          <div
-            className={`text-xs text-gray-500 dark:text-white/70`}
-          >
+          <p className={` text-gray-500 dark:text-white/70`}>
             Hours of
             <br />
             Work
-          </div>
-        </motion.div>
-      </div>
+          </p>
+        </motion.section>
+      </section>
     </AnimatedSection>
   );
+};
+
+export default ExperienceSection;
+
+
+const ExperienceCard = ({
+  title,
+  employer,
+  date,
+  description,
+  index,
+}: {
+  title: string;
+  employer: string;
+  date: string;
+  description: string;
+  index: number;
+}) => {
+  return (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+      className="text-left"
+    >
+      <section className="w-full ">
+        <h3 className={` text-gray-800 my-2 dark:text-white mb-1`}>{title}</h3>
+      </section>
+      <section className="w-full">
+        <span className="text-gray-500 dark:text-white/70">{employer}</span>
+
+        <p
+          className={` text-base text-left mb-4 text-gray-500 dark:text-white/70`}
+        >
+          {date}
+        </p>
+      </section>
+      <section className="w-full">
+        <p
+          className={`text-lg text-left text-black  dark:text-white/80 leading-relaxed`}
+        >
+          {description}
+        </p>
+      </section>
+      <Separator className="mt-20" />
+    </motion.div>
+  );
+};
+
+
+const statsCard = ()=>{
+  
 }
 
-export default ExperienceSection
+

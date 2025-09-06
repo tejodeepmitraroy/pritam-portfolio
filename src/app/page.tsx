@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <main
       className={`min-h-screen bg-gray-100 dark:bg-black text-gray-800 dark:text-white  overflow-hidden`}
-    >
+    > 
       {/* Custom Cursor */}
       <CustomCursor />
 

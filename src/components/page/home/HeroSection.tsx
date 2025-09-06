@@ -1,30 +1,29 @@
-"use client"
+"use client";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="flex min-h-dvh flex-col justify-center items-center px-6 max-w-4xl mx-auto relative">
+    <section className="flex min-h-dvh flex-col justify-center items-center px-6 max-w-5xl mx-auto relative">
       {/* Hero Section */}
-      <div className="text-center">
+      <section className="w-full flex gap-20 flex-col items-center ">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="text-sm uppercase tracking-widest mb-2"
         >
-          CRAFTING DIGITAL GOODS SINCE — V.2017
+          CRAFTING DIGITAL GOODS SINCE — 2020
         </motion.p>
-
-        <h1 className={`  text-[#2563EB] dark:text-[#3b82f6]`}>
+        <h1 className={` w-full text-[#2563EB] dark:text-[#3b82f6]`}>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="relative  "
-          >
+            className="relative w-full "
+          > 
             PRITAM
           </motion.div>
           <div className="relative   flex items-center justify-center">
@@ -35,14 +34,18 @@ const HeroSection = () => {
             >
               MA
             </motion.span>
-            <div className="relative w-32 h-32 mx-1 overflow-hidden rounded-full">
+            <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative w-32 h-40 mx-1 overflow-hidden rounded-full">
               <Image
-                src="/placeholder.svg?height=150&width=150"
+                src="/profile.png"
                 alt="Profile"
                 fill
                 className="object-cover"
               />
-            </div>
+            </motion.div>
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -52,18 +55,16 @@ const HeroSection = () => {
             </motion.span>
           </div>
         </h1>
-
+      </section>
+      <div className="text-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-6 font-sans"
+          className="mt-6 w-full max-w-xl text-2xl font-sans"
         >
-          I'm Pritam Majumder — a senior product designer
-          <br />
-          passionately creating digital experiences and
-          <br />
-          interfaces that people love to use.
+          I'm Pritam Majumder — a Experienced Video Editor and VFX Artist passionate about creating
+          digital experiences and visuals that people love .
         </motion.p>
       </div>
 

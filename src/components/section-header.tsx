@@ -7,7 +7,7 @@ interface SectionHeaderProps {
 
 export default function SectionHeader({ title }: SectionHeaderProps) {
   return (
-    <div className="flex justify-between items-center mb-8">
+    <div className="flex justify-between items-center mb-12">
       <motion.h2
         className={`text-[#2563EB] dark:text-[#d4ff00]`}
         initial={{ opacity: 0, x: -20 }}

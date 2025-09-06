@@ -26,9 +26,9 @@ export default function NavigationMenu({ isOpen, onClose }: NavigationMenuProps)
   }, [])
 
   const menuVariants = {
-    hidden: { opacity: 0, x: "-100%" },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
-    exit: { opacity: 0, x: "-100%", transition: { duration: 0.3 } },
+    hidden: { opacity: 0, y: "-100%" },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+    exit: { opacity: 0, y: "-100%", transition: { duration: 0.3 } },
   }
 
   const menuItems = [

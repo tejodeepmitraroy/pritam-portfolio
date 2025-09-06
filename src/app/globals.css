@@ -129,16 +129,16 @@
   }
 
   h1{
-    @apply text-[12rem] font-bold font-big-shoulders;
+    @apply text-[12rem] leading-52 font-bold font-big-shoulders text-center;
   }
   h2{
     @apply text-3xl font-bold font-big-shoulders;
   }
   h3{
-    @apply text-2xl font-bold font-big-shoulders;
+    @apply text-xl font-bold font-dm-sans;
   }
   h4{
-    @apply text-xl font-bold font-big-shoulders;
+    @apply text-lg font-bold font-dm-sans;
   }
   h5{
     @apply text-lg font-bold;
@@ -147,6 +147,6 @@
     @apply text-base font-bold;
   }
   p{
-    @apply text-xl font-dm-sans
+    @apply text-lg font-dm-sans text-center
   }
 }
