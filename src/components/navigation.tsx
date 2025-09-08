@@ -13,7 +13,7 @@ export default function Navigation() {
   return (
     <>
       <motion.header
-        className="flex fixed  w-full z-50  justify-between items-center p-6  mx-auto text-gray-700"
+        className="flex fixed bg-background w-full z-50  justify-between items-center p-6  mx-auto text-gray-700"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}

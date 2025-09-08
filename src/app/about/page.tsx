@@ -1,22 +1,23 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { Instagram, Dribbble, Facebook, Linkedin } from "lucide-react"
-import Navigation from "@/components/navigation"
-import { useTheme } from "@/context/theme-context"
-import ContactForm from "@/components/contact-form"
-import CustomCursor from "@/components/custom-cursor"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import Navigation from "@/components/navigation";
+import { useTheme } from "@/context/theme-context";
+import ContactForm from "@/components/contact-form";
+import { Dribbble, Facebook, Instagram, Linkedin } from "lucide-react";
+import Link from "next/link";
+import Footer from "@/components/Footer";
 
 export default function About() {
-  const [mounted, setMounted] = useState(false)
-  const { theme } = useTheme()
-  const isLight = theme === "light"
+  const [mounted, setMounted] = useState(false);
+  const { theme } = useTheme();
+  const isLight = theme === "light";
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   // Skill bar animation variants
   const skillVariants = {
@@ -28,7 +29,7 @@ export default function About() {
         ease: "easeOut",
       },
     }),
-  }
+  };
 
   // Tools marquee animation
   const marqueeVariants = {
@@ -43,22 +44,54 @@ export default function About() {
         },
       },
     },
+  };
+
+
+  const toolsSkill =[{
+    toolName:"Framer",
+    description:"No code website builder tool",
+    percentage:92
+
+  },
+  {
+    toolName:"Figma",
+    description:"User interface design tool",
+    percentage:83
+  },
+  {
+    toolName:"Illustrator",
+    description:"Professional graphic software",
+    percentage:74
+  },
+  {
+    toolName:"Photoshop",
+    description:"Professional graphic software",
+    percentage:62
+  },
+  {
+    toolName:"Slack",
+    description:"User interface design tool",
+    percentage:80
+  },
+  {
+    toolName:"Notion",
+    description:"Note taking and reminder tool",
+    percentage:54
   }
 
-  if (!mounted) return null
+
+
+]
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-black text-gray-800 dark:text-white overflow-hidden">
-      {/* Custom Cursor */}
-      <CustomCursor />
-
       {/* Header */}
       <Navigation />
 
       {/* About Title */}
-      <section className="flex flex-col items-center text-center px-6 pt-16 pb-12 max-w-4xl mx-auto">
+      <section className="flex mt-22  flex-col items-center text-center px-6 pt-16 pb-12 max-w-5xl mx-auto">
         <motion.h1
-          className=" dark:text-[#d4ff00] font-bold text-8xl tracking-tight leading-none mb-6"
+          className=" text-primary dark:text-[#d4ff00] mb-6"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -86,23 +119,23 @@ export default function About() {
       </section>
 
       {/* Profile Section */}
-      <section className="px-6 py-8 max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Profile Image */}
-          <motion.div
-            className="relative"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <div className="relative w-full h-[400px] bg-gray-800 rounded-md overflow-hidden">
-              <Image
-                src="/placeholder.svg?height=400&width=300"
-                alt="Profile"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute top-0 right-0 h-full w-2 bg-[#d4ff00]"></div>
+      <section className="px-6 py-8 max-w-5xl grid md:grid-cols-2 gap-12 mx-auto">
+        {/* Profile Image */}
+        <motion.section
+          className="w-fit"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          <div className="relative w-fit items-center justify-center  bg-gray-800 rounded-md overflow-hidden">
+            <Image
+              src="/profile.png"
+              alt="Profile"
+              width={500}
+              height={0}
+              className=" w-[400px] "
+            />
+            {/* <div className="absolute top-0 right-0 h-full w-2 bg-[#d4ff00]"></div>
               <div className="absolute bottom-0 left-0 h-2 w-full bg-[#d4ff00]"></div>
               <div className="absolute top-1/4 right-4">
                 <svg
@@ -118,227 +151,114 @@ export default function About() {
                     strokeWidth="2"
                   />
                 </svg>
-              </div>
-            </div>
+              </div> */}
+          </div>
 
-            {/* Social Media Icons */}
-            <div className="flex justify-center space-x-4 mt-6 bg-[#d4ff00] p-3 rounded-md">
-              <motion.a
-                href="#"
-                className="text-black"
-                whileHover={{ y: -5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Instagram className="h-5 w-5" />
-              </motion.a>
-              <motion.a
-                href="#"
-                className="text-black"
-                whileHover={{ y: -5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Dribbble className="h-5 w-5" />
-              </motion.a>
-              <motion.a
-                href="#"
-                className="text-black"
-                whileHover={{ y: -5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Facebook className="h-5 w-5" />
-              </motion.a>
-              <motion.a
-                href="#"
-                className="text-black"
-                whileHover={{ y: -5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Linkedin className="h-5 w-5" />
-              </motion.a>
-            </div>
-          </motion.div>
+          {/* Social Media Icons */}
+          <div className="flex justify-center space-x-4 mt-6 bg-[#d4ff00] p-3 rounded-md">
+            <Link
+              href="https://www.instagram.com/vfx_pritam/"
+              className="text-black cursor-pointer transition-all duration-300 ease-in-out hover:scale-120 hover:translate-y-[-5px]"
+            >
+              <Instagram className="h-6 w-6" />
+            </Link>
+            <Link
+              href="#"
+              className="text-black cursor-pointer transition-all duration-300 ease-in-out hover:scale-120 hover:translate-y-[-5px]"
+            >
+              <Dribbble className="h-6 w-6" />
+            </Link>
+            <Link
+              href="#"
+              className="text-black cursor-pointer transition-all duration-300 ease-in-out hover:scale-120 hover:translate-y-[-5px]"
+            >
+              <Facebook className="h-6 w-6" />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/pritammajumderedits/"
+              className="text-black cursor-pointer transition-all duration-300 ease-in-out hover:scale-120 hover:translate-y-[-5px]"
+            >
+              <Linkedin className="h-6 w-6" />
+            </Link>
+          </div>
+        </motion.section>
 
-          {/* Bio Text */}
-          <motion.div
-            className="flex flex-col justify-center"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+        {/* Bio Text */}
+        <section className="flex  flex-col justify-start items-start">
+          <motion.p
+            className=" text-2xl mb-6 text-left text-stone-600 leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7, duration: 0.5 }}
           >
-            <motion.p
-              className=" text-lg mb-6 leading-relaxed"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7, duration: 0.5 }}
-            >
-              My passion lies in the intersection of art and technology,
-              creating visually captivating interfaces and elevating overall
-              user digital experiences.
-            </motion.p>
+            My passion lies in the intersection of art and technology, creating
+            visually captivating interfaces and elevating overall user digital
+            experiences.
+          </motion.p>
 
-            <motion.p
-              className=" text-lg leading-relaxed"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.9, duration: 0.5 }}
-            >
-              I hold a Bachelor of Technology in Computer Science from the
-              esteemed Art University and a Master of Fine Arts in Interactive
-              Design. This academic foundation has equipped me with a solid
-              understanding of the principles that underpin effective
-              interaction design, providing me with the knowledge to create
-              designs that seamlessly blend aesthetics and functionality.
-            </motion.p>
-          </motion.div>
-        </div>
+          <motion.p
+            className=" text-xl mb-6 text-left text-stone-600 leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9, duration: 0.5 }}
+          >
+            I hold a Bachelor of Technology in Computer Science from the
+            esteemed Art University and a Master of Fine Arts in Interactive
+            Design. This academic foundation has equipped me with a solid
+            understanding of the principles that underpin effective interaction
+            design, providing me with the knowledge to create designs that
+            seamlessly blend aesthetics and functionality.
+          </motion.p>
+        </section>
       </section>
 
       {/* Skills Section */}
-      <section className="px-6 py-12 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Framer */}
-          <motion.div
-            className="bg-[#d4ff00] p-4 rounded-md relative overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            whileHover={{ y: -5 }}
-          >
-            <div className="flex justify-between items-start mb-2">
-              <div>
-                <h3 className="text-black font-medium">Framer</h3>
-                <p className="text-black/70 text-sm">
-                  No code website builder tool
-                </p>
-              </div>
-              <div className="text-black text-4xl font-bold">92%</div>
-            </div>
-          </motion.div>
-
-          {/* Figma */}
-          <motion.div
-            className="bg-[#d4ff00] p-4 rounded-md relative overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            whileHover={{ y: -5 }}
-          >
-            <div className="flex justify-between items-start mb-2">
-              <div>
-                <h3 className="text-black font-medium">Figma</h3>
-                <p className="text-black/70 text-sm">
-                  User interface design tool
-                </p>
-              </div>
-              <div className="text-black text-4xl font-bold">83%</div>
-            </div>
-          </motion.div>
-
-          {/* Illustrator */}
-          <motion.div
-            className="bg-[#d4ff00] p-4 rounded-md relative overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            whileHover={{ y: -5 }}
-          >
-            <div className="flex justify-between items-start mb-2">
-              <div>
-                <h3 className="text-black font-medium">Illustrator</h3>
-                <p className="text-black/70 text-sm">
-                  Professional graphic software
-                </p>
-              </div>
-              <div className="text-black text-4xl font-bold">74%</div>
-            </div>
-          </motion.div>
-
-          {/* Photoshop */}
-          <motion.div
-            className="bg-[#d4ff00] p-4 rounded-md relative overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            whileHover={{ y: -5 }}
-          >
-            <div className="flex justify-between items-start mb-2">
-              <div>
-                <h3 className="text-black font-medium">Photoshop</h3>
-                <p className="text-black/70 text-sm">
-                  Professional graphic software
-                </p>
-              </div>
-              <div className="text-black text-4xl font-bold">62%</div>
-            </div>
-          </motion.div>
-
-          {/* Slack */}
-          <motion.div
-            className="bg-[#d4ff00] p-4 rounded-md relative overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            whileHover={{ y: -5 }}
-          >
-            <div className="flex justify-between items-start mb-2">
-              <div>
-                <h3 className="text-black font-medium">Slack</h3>
-                <p className="text-black/70 text-sm">
-                  User interface design tool
-                </p>
-              </div>
-              <div className="text-black text-4xl font-bold">80%</div>
-            </div>
-          </motion.div>
-
-          {/* Notion */}
-          <motion.div
-            className="bg-[#d4ff00] p-4 rounded-md relative overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            whileHover={{ y: -5 }}
-          >
-            <div className="flex justify-between items-start mb-2">
-              <div>
-                <h3 className="text-black font-medium">Notion</h3>
-                <p className="text-black/70 text-sm">
-                  Note taking and reminder tool
-                </p>
-              </div>
-              <div className="text-black text-4xl font-bold">54%</div>
-            </div>
-          </motion.div>
-        </div>
+      <section className="px-6 py-12 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Framer */}
+        {toolsSkill.map((skill, index) => (
+          <SkillsCard
+            key={index}
+            toolName={skill.toolName}
+            description={skill.description}
+            percentage={skill.percentage}
+          />
+        ))}
+        
       </section>
 
       {/* Contact Form */}
       <ContactForm />
 
-      {/* Footer */}
-      <footer className="bg-[#d4ff00]/10 py-8 overflow-hidden mt-12">
-        <motion.div
-          className="flex space-x-8 text-[#d4ff00] font-bold text-4xl whitespace-nowrap opacity-30"
-          variants={marqueeVariants}
-          animate="animate"
-          custom={-1}
-        >
-          <div>PORTFOLIO</div>
-          <div>TWITTER</div>
-          <div>LINKEDIN</div>
-          <div>BEHANCE</div>
-          <div>PORTFOLIO</div>
-          <div>TWITTER</div>
-          <div>LINKEDIN</div>
-          <div>BEHANCE</div>
-        </motion.div>
-      </footer>
+     <Footer />
     </div>
   );
 }
+
+const SkillsCard = ({
+  toolName,
+  description,
+  percentage,
+}: {
+  toolName: string;
+  description: string;
+  percentage: number;
+}) => {
+  return (
+    <motion.div
+      className="bg-[#d4ff00] p-4 rounded-md relative overflow-hidden"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ y: -5 }}
+    >
+      <div className="flex justify-between items-start mb-2">
+        <div>
+          <h2 className="text-black text-4xl font-medium">{toolName}</h2>
+          <p className="text-black/70 text-sm">{description}</p>
+        </div>
+        <div className="text-black text-6xl font-bold">{percentage}%</div>
+      </div>
+    </motion.div>
+  );
+};
