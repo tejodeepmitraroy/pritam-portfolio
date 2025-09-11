@@ -1,24 +1,12 @@
-import { client } from "../sanity";
-import { allExperienceQuery, experienceByIdQuery } from "../queries";
-
-export interface Experience {
-  _id: string;
-  title: string;
-  company: string;
-  startDate: string;
-  endDate?: string;
-  isCurrentlyWorkingHere: boolean;
-  points: string[];
-  technologies: string[];
-  companyLogo?: string;
-  description?: string;
-}
+import { client } from '../sanity';
+import { allExperienceQuery, experienceByIdQuery } from '../queries';
+import { Experience } from '@/types/sanity.types';
 
 /**
  * Fetches all experience items from Sanity
  */
 export async function getAllExperience(): Promise<Experience[]> {
-  return await client.fetch(allExperienceQuery);
+	return await client.fetch(allExperienceQuery);
 }
 
 /**
@@ -26,7 +14,7 @@ export async function getAllExperience(): Promise<Experience[]> {
  * @param id - The ID of the experience to fetch
  */
 export async function getExperienceById(
-  id: string
+	id: string
 ): Promise<Experience | null> {
-  return await client.fetch(experienceByIdQuery, { id });
+	return await client.fetch(experienceByIdQuery, { id });
 }

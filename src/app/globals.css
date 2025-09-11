@@ -127,9 +127,12 @@
   body {
     @apply bg-background text-foreground font-dm-sans
   }
+  main{
+    @apply bg-gray-100 dark:bg-black text-gray-800 dark:text-white
+  }
 
   h1{
-    @apply text-[12rem] leading-52 font-bold font-big-shoulders text-center;
+    @apply text-[12rem]  dark:text-[#d4ff00] leading-52 font-bold font-big-shoulders text-center;
   }
   h2{
     @apply text-3xl font-bold font-big-shoulders;
