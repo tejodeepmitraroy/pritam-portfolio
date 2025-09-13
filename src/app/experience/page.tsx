@@ -4,7 +4,7 @@ import type React from 'react';
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Navigation from '@/components/navigation';
+import Navigation from '@/components/navigation/navigation';
 
 import CustomCursor from '@/components/custom-cursor';
 

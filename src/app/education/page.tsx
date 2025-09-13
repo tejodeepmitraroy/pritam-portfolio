@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Navigation from '@/components/navigation';
+import Navigation from '@/components/navigation/navigation';
 import { useTheme } from '@/context/theme-context';
 import CustomCursor from '@/components/custom-cursor';
 import ContactForm from '@/components/contact-form';

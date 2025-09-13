@@ -3,8 +3,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
 import { motion } from 'motion/react';
-import NavigationMenu from './navigation-menu';
-import { ModeToggle } from './ModeToggle';
+import NavigationMenu from '../navigation-menu';
+import { ModeToggle } from '../ModeToggle';
 
 export default function Navigation() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);

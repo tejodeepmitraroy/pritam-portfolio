@@ -1,12 +1,11 @@
-import Navigation from '@/components/navigation';
+import Navigation from '@/components/navigation/navigation';
 import ContactForm from '@/components/contact-form';
-import Footer from '@/components/Footer';
+import Footer from '@/components/navigation/Footer';
 import PageTitle from '@/components/page-title';
-
-import { getAllProjects } from '@/lib/api/projectApi';
 import ProjectCard from '@/components/page/projects/ProjectCard';
-import { urlFor } from '@/lib/sanity';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { getAllProjects } from '@/sanity/actions/queryActions';
+import { imageUrlFor } from '@/sanity/config/SanityImageUrl';
 
 export default async function Projects() {
 	const getAllProject = await getAllProjects();
@@ -21,7 +20,9 @@ export default async function Projects() {
 					<ProjectCard
 						key={index}
 						tooltip={project.title}
-						thumbnail={urlFor(project.thumbnail as SanityImageSource).url()}
+						thumbnail={imageUrlFor(
+							project.thumbnail as SanityImageSource
+						).url()}
 						index={index}
 						link={`/projects/${project.slug?.current}`}
 					/>

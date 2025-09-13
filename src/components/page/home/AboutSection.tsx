@@ -1,27 +1,32 @@
 'use client';
-import React from 'react';
+import React, { FC } from 'react';
 import { motion } from 'motion/react';
 import AnimatedSection from '@/components/animated-section';
 import SectionHeader from '@/components/section-header';
+import { About, Skills } from '@/types/sanity.types';
 
-const AboutSection = () => {
-	const skills = [
-		{
-			name: 'Frontend',
-			percent: 82,
-			tools: 'HTML, CSS, JavaScript',
-		},
-		{
-			name: 'UI/UX, Prototyping',
-			percent: 82,
-			tools: 'Figma, Adobe XD',
-		},
-		{
-			name: 'Stack',
-			percent: 82,
-			tools: 'React, Node, Express',
-		},
-	];
+interface AboutSectionProps {
+	aboutData: About;
+	skillsData: Skills[];
+}
+const AboutSection: FC<AboutSectionProps> = ({ aboutData, skillsData }) => {
+	// const skills = [
+	// 	{
+	// 		name: 'Frontend',
+	// 		percent: 82,
+	// 		tools: 'HTML, CSS, JavaScript',
+	// 	},
+	// 	{
+	// 		name: 'UI/UX, Prototyping',
+	// 		percent: 82,
+	// 		tools: 'Figma, Adobe XD',
+	// 	},
+	// 	{
+	// 		name: 'Stack',
+	// 		percent: 82,
+	// 		tools: 'React, Node, Express',
+	// 	},
+	// ];
 	return (
 		<AnimatedSection className="">
 			<SectionHeader title="ABOUT" />
@@ -34,11 +39,7 @@ const AboutSection = () => {
 					viewport={{ once: true }}
 					transition={{ duration: 0.7, delay: 0.3 }}
 				>
-					<p className="mb-4">
-						My passion lies in the intersection of art and technology, creating
-						visually appealing designs while maintaining a smooth user
-						experience.
-					</p>
+					<p className="mb-4">{aboutData.paragraph}</p>
 				</motion.div>
 
 				{/* Skills */}
@@ -50,16 +51,10 @@ const AboutSection = () => {
 						viewport={{ once: true }}
 						transition={{ duration: 0.7, delay: 0.5 }}
 					>
-						<p className="mb-4">
-							I hold a Bachelor of Science in Computer Science and a Master's
-							degree in Interaction Design. I've completed my studies at
-							prestigious institutions that equipped me with a solid foundation
-							in both design and development, allowing me to bridge the gap
-							between creativity and functionality.
-						</p>
+						<p className="mb-4">{aboutData.paragraph2}</p>
 					</motion.div>
 
-					{skills.map((skill) => (
+					{skillsData.map((skill) => (
 						<motion.div
 							className={`flex w-full items-center justify-between rounded-lg bg-[#2563EB] p-6 dark:bg-[#d4ff00]`}
 							initial={{ opacity: 0, scale: 0.9 }}
@@ -72,12 +67,12 @@ const AboutSection = () => {
 							<section className="w-full">
 								<h3 className="mb-1 text-blue-200">{skill.name}</h3>
 								<div className={`text-xs text-blue-200 dark:text-black/70`}>
-									{skill.tools}
+									{skill.subtitle}
 								</div>
 							</section>
 
 							<section className="mt-2 flex w-full items-center justify-center border-l-2 border-l-white/30 text-3xl font-bold text-white/30">
-								{skill.percent}%
+								{skill.percentage}%
 							</section>
 						</motion.div>
 					))}

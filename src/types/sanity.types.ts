@@ -13,17 +13,136 @@
  */
 
 // Source: schema.json
-export type Skills = {
+export type About = {
 	_id: string;
-	_type: 'skills';
+	_type: 'about';
 	_createdAt: string;
 	_updatedAt: string;
 	_rev: string;
-	id?: number;
+	paragraph?: string;
+	paragraph2?: string;
+};
+
+export type Enquiry = {
+	_id: string;
+	_type: 'enquiry';
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
 	name?: string;
-	technologies?: Array<{
+	email?: string;
+	message?: string;
+	createdAt?: string;
+};
+
+export type TermsConditions = {
+	_id: string;
+	_type: 'termsConditions';
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
+	name?: string;
+	terms?: Array<{
+		children?: Array<{
+			marks?: Array<string>;
+			text?: string;
+			_type: 'span';
+			_key: string;
+		}>;
+		style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+		listItem?: 'bullet' | 'number';
+		markDefs?: Array<{
+			href?: string;
+			_type: 'link';
+			_key: string;
+		}>;
+		level?: number;
+		_type: 'block';
+		_key: string;
+	}>;
+};
+
+export type RefundPolicy = {
+	_id: string;
+	_type: 'refundPolicy';
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
+	name?: string;
+	policy?: Array<{
+		children?: Array<{
+			marks?: Array<string>;
+			text?: string;
+			_type: 'span';
+			_key: string;
+		}>;
+		style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+		listItem?: 'bullet' | 'number';
+		markDefs?: Array<{
+			href?: string;
+			_type: 'link';
+			_key: string;
+		}>;
+		level?: number;
+		_type: 'block';
+		_key: string;
+	}>;
+};
+
+export type PrivacyPolicy = {
+	_id: string;
+	_type: 'privacyPolicy';
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
+	name?: string;
+	policy?: Array<{
+		children?: Array<{
+			marks?: Array<string>;
+			text?: string;
+			_type: 'span';
+			_key: string;
+		}>;
+		style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+		listItem?: 'bullet' | 'number';
+		markDefs?: Array<{
+			href?: string;
+			_type: 'link';
+			_key: string;
+		}>;
+		level?: number;
+		_type: 'block';
+		_key: string;
+	}>;
+};
+
+export type Blogs = {
+	_id: string;
+	_type: 'blogs';
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
+	title?: string;
+	slug?: Slug;
+	featured?: boolean;
+	description?: string;
+	thumbnail?: {
+		asset?: {
+			_ref: string;
+			_type: 'reference';
+			_weak?: boolean;
+			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+		};
+		media?: unknown;
+		hotspot?: SanityImageHotspot;
+		crop?: SanityImageCrop;
+		_type: 'image';
+	};
+	category?: string;
+	avgReadingTime?: number;
+	author?: {
 		name?: string;
-		logo?: {
+		image?: {
 			asset?: {
 				_ref: string;
 				_type: 'reference';
@@ -35,9 +154,74 @@ export type Skills = {
 			crop?: SanityImageCrop;
 			_type: 'image';
 		};
-		_type: 'technology';
-		_key: string;
-	}>;
+		twitter?: string;
+		linkedIn?: string;
+	};
+	content?: Array<
+		| {
+				children?: Array<{
+					marks?: Array<string>;
+					text?: string;
+					_type: 'span';
+					_key: string;
+				}>;
+				style?:
+					| 'normal'
+					| 'h1'
+					| 'h2'
+					| 'h3'
+					| 'h4'
+					| 'h5'
+					| 'h6'
+					| 'blockquote';
+				listItem?: 'bullet' | 'number';
+				markDefs?: Array<{
+					href?: string;
+					_type: 'link';
+					_key: string;
+				}>;
+				level?: number;
+				_type: 'block';
+				_key: string;
+		  }
+		| {
+				asset?: {
+					_ref: string;
+					_type: 'reference';
+					_weak?: boolean;
+					[internalGroqTypeReferenceTo]?: 'sanity.fileAsset';
+				};
+				media?: unknown;
+				_type: 'file';
+				_key: string;
+		  }
+		| {
+				asset?: {
+					_ref: string;
+					_type: 'reference';
+					_weak?: boolean;
+					[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+				};
+				media?: unknown;
+				hotspot?: SanityImageHotspot;
+				crop?: SanityImageCrop;
+				alt?: string;
+				_type: 'image';
+				_key: string;
+		  }
+	>;
+};
+
+export type Skills = {
+	_id: string;
+	_type: 'skills';
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
+	sequence?: number;
+	name?: string;
+	subtitle?: string;
+	percentage?: number;
 };
 
 export type Testimonial = {
@@ -138,10 +322,19 @@ export type SocialLinks = {
 	_createdAt: string;
 	_updatedAt: string;
 	_rev: string;
-	linkedIn?: string;
-	github?: string;
-	facebook?: string;
-	twitter?: string;
+	sequence?: number;
+	name?:
+		| 'facebook'
+		| 'twitter'
+		| 'instagram'
+		| 'linkedin'
+		| 'youtube'
+		| 'pinterest'
+		| 'tiktok'
+		| 'x'
+		| 'dribbble'
+		| 'behance';
+	url?: string;
 };
 
 export type Experience = {
@@ -176,7 +369,6 @@ export type BasicInfo = {
 		_type: 'image';
 	};
 	age?: string;
-	born?: string;
 	subtitle?: string;
 	phone?: string;
 	mail?: string;
@@ -192,10 +384,8 @@ export type BasicInfo = {
 		crop?: SanityImageCrop;
 		_type: 'image';
 	};
-	bio?: string;
 	experienceYears?: string;
 	projectDone?: string;
-	contactUsDesc?: string;
 	location?: string;
 };
 
@@ -327,6 +517,12 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+	| About
+	| Enquiry
+	| TermsConditions
+	| RefundPolicy
+	| PrivacyPolicy
+	| Blogs
 	| Skills
 	| Testimonial
 	| Services

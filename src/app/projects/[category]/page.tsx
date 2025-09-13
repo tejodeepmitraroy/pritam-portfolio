@@ -1,12 +1,13 @@
 import ContactForm from '@/components/contact-form';
-import Footer from '@/components/Footer';
-import Navigation from '@/components/navigation';
+import Footer from '@/components/navigation/Footer';
+import Navigation from '@/components/navigation/navigation';
 import PageTitle from '@/components/page-title';
 import React from 'react';
-import { getProjectBySlug } from '@/lib/api/projectApi';
+
 import ProjectCard from '@/components/page/projects/ProjectCard';
-import { urlFor } from '@/lib/sanity';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { imageUrlFor } from '@/sanity/config/SanityImageUrl';
+import { getProjectBySlug } from '@/sanity/actions/queryActions';
 
 const page = async ({ params }: { params: Promise<{ category: string }> }) => {
 	const { category } = await params;
@@ -25,7 +26,9 @@ const page = async ({ params }: { params: Promise<{ category: string }> }) => {
 					<ProjectCard
 						key={index}
 						tooltip={project.title}
-						thumbnail={urlFor(project.thumbnail as SanityImageSource).url()}
+						thumbnail={imageUrlFor(
+							project.thumbnail as SanityImageSource
+						).url()}
 						index={index}
 						link={project.link}
 					/>
