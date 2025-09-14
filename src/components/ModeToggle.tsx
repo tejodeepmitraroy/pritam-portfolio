@@ -1,14 +1,20 @@
 'use client';
 import * as React from 'react';
 import { useTheme } from 'next-themes';
-import { Button } from './ui/button';
+// import { Button } from './ui/button';
+import { Switch } from './ui/switch';
 
 export function ModeToggle() {
 	const { setTheme, theme } = useTheme();
 
 	return (
 		<div className="flex items-center rounded-full bg-gray-300 p-1">
-			{theme === 'dark' ? (
+			<Switch
+				checked={theme === 'dark'}
+				onCheckedChange={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+				className="scale-150 cursor-pointer"
+			/>
+			{/* {theme === 'dark' ? (
 				<Button
 					variant="ghost"
 					size="icon"
@@ -27,7 +33,7 @@ export function ModeToggle() {
 				>
 					Dark
 				</Button>
-			)}
+			)} */}
 		</div>
 	);
 }

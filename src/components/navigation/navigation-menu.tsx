@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import { useTheme } from '@/context/theme-context';
+import { useTheme } from 'next-themes';
 
 interface NavigationMenuProps {
 	isOpen: boolean;
@@ -19,14 +18,8 @@ export default function NavigationMenu({
 	const pathname = usePathname();
 	const { setTheme, theme } = useTheme();
 	const toggleTheme = () => {
-		setTheme(theme === 'light' ? 'dark' : 'light');
+		setTheme(theme === 'dark' ? 'light' : 'dark');
 	};
-
-	const [mounted, setMounted] = useState(false);
-
-	useEffect(() => {
-		setMounted(true);
-	}, []);
 
 	const menuVariants = {
 		hidden: { opacity: 0, y: '-100%' },
@@ -39,12 +32,10 @@ export default function NavigationMenu({
 		{ name: 'ABOUT', path: '/about' },
 		{ name: 'PROJECTS', path: '/projects' },
 		{ name: 'EXPERIENCE', path: '/experience' },
-		{ name: 'EDUCATION', path: '/education' },
+		// { name: 'EDUCATION', path: '/education' },
 		{ name: 'WRITING', path: '/writing' },
 		{ name: 'CONTACT', path: '/contact' },
 	];
-
-	if (!mounted) return null;
 
 	return (
 		<AnimatePresence>
@@ -69,7 +60,7 @@ export default function NavigationMenu({
 									whileTap={{ scale: 0.95 }}
 								>
 									<span className="font-medium">
-										{theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+										{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
 									</span>
 									<div
 										className={`h-4 w-4 rounded-full ${
@@ -97,10 +88,12 @@ export default function NavigationMenu({
 
 						<div className="mt-auto">
 							<div className="text-base text-white/70">
-								San Francisco, CA, USA
+								India, West Bengal, Kolkata
 							</div>
-							<div className="mt-2 mb-1 text-[#d4ff00]">lucas@email.com</div>
-							<div className="text-base text-white/70">www.framer.website</div>
+							<div className="mt-2 mb-1 text-[#d4ff00]">
+								pritammajumder761@email.com
+							</div>
+							{/* <div className="text-base text-white/70">www.framer.website</div> */}
 						</div>
 					</div>
 				</motion.div>

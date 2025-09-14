@@ -7,7 +7,10 @@ import { motion } from 'motion/react';
 import AnimatedSection from './animated-section';
 import SectionHeader from './section-header';
 
-export default function ContactForm() {
+interface ContactFormProps {
+	headerView?: boolean;
+}
+export default function ContactForm({ headerView = true }: ContactFormProps) {
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
@@ -42,7 +45,7 @@ export default function ContactForm() {
 
 	return (
 		<AnimatedSection delay={0.2}>
-			<SectionHeader title="Contact Form" />
+			{headerView ?? <SectionHeader title="Contact Form" />}
 			<div className="mx-auto max-w-6xl px-6 py-12">
 				<div className="grid gap-8 md:grid-cols-2">
 					<motion.div
@@ -58,7 +61,7 @@ export default function ContactForm() {
 							contact me.
 						</p>
 						<div className={`mb-1 text-[#2563EB] dark:text-[#d4ff00]`}>
-							pritammajumder@email.com
+							pritammajumder761@email.com
 						</div>
 
 						<div className={`text-sm text-gray-500 dark:text-white/70`}>

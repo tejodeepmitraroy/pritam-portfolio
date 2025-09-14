@@ -1,32 +1,16 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import Navigation from '@/components/navigation/navigation';
-import { useTheme } from '@/context/theme-context';
-import CustomCursor from '@/components/custom-cursor';
-
 import ContactForm from '@/components/contact-form';
+import PageTitle from '@/components/page-title';
+import Footer from '@/components/navigation/Footer';
 
 export default function Contact() {
-	const [mounted, setMounted] = useState(false);
-	const { theme } = useTheme();
-	const isLight = theme === 'light';
-
-	useEffect(() => {
-		setMounted(true);
-	}, []);
-
-	if (!mounted) return null;
-
 	return (
-		<div
-			className={`min-h-screen ${isLight ? 'bg-gray-100' : 'bg-black'} overflow-hidden`}
-		>
-			<CustomCursor />
-
+		<div className={`min-h-screen overflow-hidden`}>
 			<Navigation />
+			<PageTitle title="CONTACT" />
 
-			<section className="mx-auto flex max-w-4xl flex-col items-center px-6 pt-16 pb-12 text-center">
+			{/* <section className="mx-auto flex max-w-4xl flex-col items-center px-6 pt-16 pb-12 text-center">
 				<motion.div
 					className={`mb-6 text-8xl leading-none font-bold tracking-tight ${
 						isLight ? 'text-[#2563EB]' : 'text-[#d4ff00]'
@@ -55,40 +39,12 @@ export default function Contact() {
 						/>
 					</svg>
 				</motion.div>
-			</section>
+			</section> */}
 
 			{/* Contact Form */}
-			<ContactForm />
+			<ContactForm headerView={false} />
 
-			<footer
-				className={`${isLight ? 'bg-[#2563EB]/10' : 'bg-[#d4ff00]/10'} mt-12 overflow-hidden py-8`}
-			>
-				<motion.div
-					className={`flex space-x-8 ${
-						isLight ? 'text-[#2563EB]' : 'text-[#d4ff00]'
-					} text-4xl font-bold whitespace-nowrap opacity-30`}
-					animate={{
-						x: [0, -1000],
-						transition: {
-							x: {
-								repeat: Number.POSITIVE_INFINITY,
-								repeatType: 'loop',
-								duration: 20,
-								ease: 'linear',
-							},
-						},
-					}}
-				>
-					<div>PORTFOLIO</div>
-					<div>TWITTER</div>
-					<div>LINKEDIN</div>
-					<div>BEHANCE</div>
-					<div>PORTFOLIO</div>
-					<div>TWITTER</div>
-					<div>LINKEDIN</div>
-					<div>BEHANCE</div>
-				</motion.div>
-			</footer>
+			<Footer />
 		</div>
 	);
 }

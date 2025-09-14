@@ -1,15 +1,32 @@
-'use client';
 import AnimatedSection from '@/components/animated-section';
 import SectionHeader from '@/components/section-header';
-import { motion } from 'motion/react';
-import React from 'react';
+import { Projects } from '@/types/sanity.types';
 
-const ProjectionSection = () => {
+import React, { FC } from 'react';
+import ProjectCard from '../projects/ProjectCard';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { imageUrlFor } from '@/sanity/config/SanityImageUrl';
+
+interface ProjectionSectionProps {
+	projects: Projects[];
+}
+const ProjectionSection: FC<ProjectionSectionProps> = ({ projects }) => {
 	return (
 		<AnimatedSection delay={0.2}>
 			<SectionHeader title="PROJECTS" />
 			<div className="mx-auto grid max-w-6xl grid-cols-2 gap-10">
-				{[1, 2, 3, 4].map((item, index) => (
+				{projects.map((project, index) => (
+					<ProjectCard
+						key={index}
+						tooltip={project.title}
+						thumbnail={imageUrlFor(
+							project.thumbnail as SanityImageSource
+						).url()}
+						index={index}
+						link={`/projects/${project.slug?.current}`}
+					/>
+				))}
+				{/* {projects.map((item, index) => (
 					<motion.div
 						key={item}
 						className="flex aspect-[4/3] cursor-pointer items-center justify-center rounded-lg bg-gray-800"
@@ -118,7 +135,7 @@ const ProjectionSection = () => {
 							)}
 						</div>
 					</motion.div>
-				))}
+				))} */}
 			</div>
 		</AnimatedSection>
 	);
