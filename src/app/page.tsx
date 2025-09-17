@@ -8,12 +8,12 @@ import AboutSection from '@/components/page/home/AboutSection';
 import {
 	getAbout,
 	getAllProjects,
-	getSkills,
+
 } from '@/sanity/actions/queryActions';
 
 export default async function Home() {
 	const aboutData = await getAbout();
-	const skillsData = await getSkills();
+	
 	const getAllProject = await getAllProjects();
 	console.log('Project Content', getAllProject);
 	return (
@@ -25,7 +25,7 @@ export default async function Home() {
 			<HeroSection />
 
 			{/* About Section */}
-			<AboutSection aboutData={aboutData} skillsData={skillsData} />
+			<AboutSection aboutData={aboutData}/>
 
 			{/* Projects Section */}
 			<ProjectionSection projects={getAllProject} />

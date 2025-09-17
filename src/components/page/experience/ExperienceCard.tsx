@@ -4,19 +4,17 @@ import { motion } from 'framer-motion';
 
 interface ExperienceProps {
 	index: number;
-	jobTitle: string;
-	company: string;
-	startDate: number;
-	endDate: number;
-	description: string;
+	jobTitle?: string;
+	company?: string;
+	timeRange?: string;
+	description?: string;
 }
 
 const ExperienceCard: FC<ExperienceProps> = ({
 	index,
 	jobTitle,
 	company,
-	startDate,
-	endDate,
+	timeRange,
 	description,
 }) => {
 	return (
@@ -31,7 +29,7 @@ const ExperienceCard: FC<ExperienceProps> = ({
 			<h3 className="mb-1 text-xl font-bold text-gray-800">{jobTitle}</h3>
 			<p className="mb-1 text-gray-600">{company}</p>
 			<p className="mb-4 text-sm text-gray-500">
-				{startDate} - {endDate ?? 'Present'}
+				{timeRange ?? 'Present'}
 			</p>
 			<p className="leading-relaxed text-gray-700">{description}</p>
 		</motion.div>

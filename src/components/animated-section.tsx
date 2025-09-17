@@ -16,7 +16,7 @@ export default function AnimatedSection({
 }: AnimatedSectionProps) {
 	return (
 		<motion.section
-			className={`mx-auto max-w-3xl px-6 py-16 lg:max-w-5xl lg:px-0 ${className}`}
+			className={`mx-auto max-w-3xl px-6 md:px-0 py-16 lg:max-w-5xl lg:px-0 ${className}`}
 			initial={{ opacity: 0, y: 50 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true, margin: '-100px' }}

@@ -91,7 +91,7 @@ export default function NavigationMenu({
 								India, West Bengal, Kolkata
 							</div>
 							<div className="mt-2 mb-1 text-[#d4ff00]">
-								pritammajumder761@email.com
+								pritammajumderedits@gmail.com
 							</div>
 							{/* <div className="text-base text-white/70">www.framer.website</div> */}
 						</div>

@@ -61,7 +61,7 @@ export default function ContactForm({ headerView = true }: ContactFormProps) {
 							contact me.
 						</p>
 						<div className={`mb-1 text-[#2563EB] dark:text-[#d4ff00]`}>
-							pritammajumder761@email.com
+							pritammajumderedits@gmail.com
 						</div>
 
 						<div className={`text-sm text-gray-500 dark:text-white/70`}>

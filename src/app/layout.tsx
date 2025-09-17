@@ -7,6 +7,9 @@ import CustomCursor from '@/components/custom-cursor';
 export const metadata: Metadata = {
 	title: 'Pritam Majumder - Portfolio',
 	description: 'Expert Video Editor Portfolio',
+	verification: {
+		google: process.env.GOOGLE_SITE_VERIFICATION_TAG,
+	},
 };
 
 export default function RootLayout({
@@ -16,6 +19,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
+			
 			<body>
 				<ThemeProvider
 					attribute="class"

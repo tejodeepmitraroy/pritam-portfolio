@@ -64,9 +64,9 @@ const HeroSection = () => {
 					transition={{ duration: 0.5, delay: 0.3 }}
 					className="mt-6 w-full max-w-xl font-sans text-2xl"
 				>
-					I'm Pritam Majumder — a Experienced Video Editor and VFX Artist
-					passionate about creating digital experiences and visuals that people
-					love .
+					I'm Pritam Majumder an Experienced Video Editor & Graphic Designer
+					passionate about creating digital experiences & visuals
+					that people love.
 				</motion.p>
 			</div>
 

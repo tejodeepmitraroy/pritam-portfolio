@@ -5,44 +5,45 @@ import Navigation from '@/components/navigation/navigation';
 import PageTitle from '@/components/page-title';
 import Footer from '@/components/navigation/Footer';
 import ExperienceCard from '../../components/page/experience/ExperienceCard';
+import { getAllExperience } from '@/sanity/actions/queryActions';
+export default async function Experience() {
+	// const experiences = [
+	// 	{
+	// 		title: 'Senior UX/UI Designer',
+	// 		company: 'SuperCo',
 
-export default function Experience() {
-	const experiences = [
-		{
-			title: 'Senior UX/UI Designer',
-			company: 'SuperCo',
+	// 		startDate: 2019,
+	// 		endDate: 2024,
+	// 		description:
+	// 			'Led the redesign of the flagship mobile application, resulting in a increase in user retention within six months. Implemented a streamlined user onboarding process, reducing user drop-offs.',
+	// 	},
+	// 	{
+	// 		title: 'UI/UX Designer',
+	// 		company: 'BlendXYZ',
+	// 		startDate: 2016,
+	// 		endDate: 2017,
+	// 		description:
+	// 			'Collaborated with the development team to implement a responsive design approach, improving the mobile user experience and increasing mobile app engagement.',
+	// 	},
+	// 	{
+	// 		title: 'Lead Product Designer',
+	// 		company: 'CocoBasic',
+	// 		startDate: 2017,
+	// 		endDate: 2019,
+	// 		description:
+	// 			'Designed and implemented creative solutions such as wellness app and high-traffic e-commerce websites for various clients and increase overall client business to his satisfaction.',
+	// 	},
+	// 	{
+	// 		title: 'Junior Designer',
+	// 		company: 'Internisium',
+	// 		startDate: 2015,
+	// 		endDate: 2016,
+	// 		description:
+	// 			'Internship and starting position in creative team as Junior Designer. Focused on creating wireframes, styleguides, presentations and prototypes for web and mobile applications.',
+	// 	},
+	// ];
 
-			startDate: 2019,
-			endDate: 2024,
-			description:
-				'Led the redesign of the flagship mobile application, resulting in a increase in user retention within six months. Implemented a streamlined user onboarding process, reducing user drop-offs.',
-		},
-		{
-			title: 'UI/UX Designer',
-			company: 'BlendXYZ',
-			startDate: 2016,
-			endDate: 2017,
-			description:
-				'Collaborated with the development team to implement a responsive design approach, improving the mobile user experience and increasing mobile app engagement.',
-		},
-		{
-			title: 'Lead Product Designer',
-			company: 'CocoBasic',
-			startDate: 2017,
-			endDate: 2019,
-			description:
-				'Designed and implemented creative solutions such as wellness app and high-traffic e-commerce websites for various clients and increase overall client business to his satisfaction.',
-		},
-		{
-			title: 'Junior Designer',
-			company: 'Internisium',
-			startDate: 2015,
-			endDate: 2016,
-			description:
-				'Internship and starting position in creative team as Junior Designer. Focused on creating wireframes, styleguides, presentations and prototypes for web and mobile applications.',
-		},
-	];
-
+	const experienceData = await getAllExperience();
 	return (
 		<div className="min-h-screen overflow-hidden">
 			<Navigation />
@@ -79,14 +80,13 @@ export default function Experience() {
 
 			<section className="mx-auto max-w-6xl px-6 py-8">
 				<div className="grid gap-12 md:grid-cols-2">
-					{experiences.map((exp, index) => (
+					{experienceData.map((exp, index) => (
 						<ExperienceCard
 							key={index}
 							index={index}
-							jobTitle={exp.title}
+							jobTitle={exp.position}
 							company={exp.company}
-							startDate={exp.startDate}
-							endDate={exp.endDate}
+							timeRange={exp.timeRange}
 							description={exp.description}
 						/>
 					))}
