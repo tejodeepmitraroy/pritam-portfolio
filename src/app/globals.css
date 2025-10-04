@@ -132,7 +132,7 @@
   }
 
   h1{
-    @apply text-[12rem]  dark:text-[#d4ff00] leading-52 font-bold font-big-shoulders text-center;
+    @apply text-7xl   md:text-[12rem]  dark:text-[#d4ff00] md:leading-52 font-bold font-big-shoulders text-center;
   }
   h2{
     @apply text-3xl font-bold font-big-shoulders;

@@ -11,7 +11,7 @@ interface AboutSectionProps {
 }
 const AboutMain: FC<AboutSectionProps> = ({ aboutData }) => {
 	return (
-		<section className="mx-auto grid max-w-5xl gap-12 px-6 md:px-0 py-8 md:grid-cols-2">
+		<section className="mx-auto grid max-w-5xl gap-12 px-6 py-8 md:grid-cols-2 md:px-0">
 			{/* Profile Image */}
 			<motion.section
 				className="w-fit"

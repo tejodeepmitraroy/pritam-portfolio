@@ -35,6 +35,16 @@ export const SKILLS_QUERY = defineQuery(`*[_type == "skills"]{
   subtitle
 }`);
 
+//services Query
+export const SERVICES_QUERY = defineQuery(`*[_type == "services"]{
+  _id,
+  _type,
+  sequence,
+  title,
+  description,
+  services
+}`);
+
 //project Query
 export const ALL_PROJECTS_QUERY = defineQuery(`*[_type == "projects"] {
   _id,
@@ -88,13 +98,12 @@ export const BLOG_BY_SLUG_QUERY = (slug: string) =>
   }`);
 
 //Experience Query
-export const ALL_EXPERIENCE_QUERY =
-	defineQuery(`*[_type == "experience"] | order(startDate desc) {
+export const ALL_EXPERIENCE_QUERY = defineQuery(`*[_type == "experience"] {
     _id,
-    title,
+    position,
     company,
-    startDate,
-    endDate,
+    timeRange,
+    description,
     isCurrentlyWorkingHere,
     points,
     technologies[],

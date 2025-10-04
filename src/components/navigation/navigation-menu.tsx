@@ -32,7 +32,7 @@ export default function NavigationMenu({
 		{ name: 'ABOUT', path: '/about' },
 		{ name: 'PROJECTS', path: '/projects' },
 		{ name: 'EXPERIENCE', path: '/experience' },
-		// { name: 'EDUCATION', path: '/education' },
+		{ name: 'SERVICES', path: '/services' },
 		{ name: 'WRITING', path: '/writing' },
 		{ name: 'CONTACT', path: '/contact' },
 	];

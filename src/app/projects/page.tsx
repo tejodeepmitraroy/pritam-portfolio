@@ -15,7 +15,7 @@ export default async function Projects() {
 			<Navigation />
 			<PageTitle title="PROJECTS" />
 
-			<section className="mx-auto grid max-w-5xl grid-cols-2 gap-10 px-6 py-8">
+			<section className="mx-auto grid max-w-5xl grid-cols-2 gap-10 px-6 py-8 md:px-0">
 				{getAllProject.map((project, index) => (
 					<ProjectCard
 						key={index}

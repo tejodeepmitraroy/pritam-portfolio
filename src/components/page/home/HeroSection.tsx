@@ -38,7 +38,7 @@ const HeroSection = () => {
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
 							transition={{ duration: 0.8, delay: 0.4 }}
-							className="relative mx-1 h-40 w-32 overflow-hidden rounded-full"
+							className="top absolute mx-1 h-20 w-20 overflow-hidden rounded-full lg:relative lg:h-40 lg:w-32"
 						>
 							<Image
 								src="/profile.png"
@@ -65,8 +65,8 @@ const HeroSection = () => {
 					className="mt-6 w-full max-w-xl font-sans text-2xl"
 				>
 					I'm Pritam Majumder an Experienced Video Editor & Graphic Designer
-					passionate about creating digital experiences & visuals
-					that people love.
+					passionate about creating digital experiences & visuals that people
+					love.
 				</motion.p>
 			</div>
 

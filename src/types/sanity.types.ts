@@ -254,9 +254,10 @@ export type Services = {
 	_createdAt: string;
 	_updatedAt: string;
 	_rev: string;
-	id?: number;
+	sequence?: number;
 	title?: string;
 	description?: string;
+	services?: Array<string>;
 };
 
 export type Projects = {
@@ -293,6 +294,7 @@ export type Projects = {
 			alt?: string;
 			_type: 'image';
 		};
+		orientation?: 'landscape' | 'portrait';
 		title?: string;
 		description?: string;
 		service?: string;
@@ -332,8 +334,14 @@ export type SocialLinks = {
 		| 'pinterest'
 		| 'tiktok'
 		| 'x'
+		| 'whatsapp'
 		| 'dribbble'
-		| 'behance';
+		| 'behance'
+		| 'artstation'
+		| 'ytjobs'
+		| 'fiver'
+		| 'upwork'
+		| 'truelancer';
 	url?: string;
 };
 

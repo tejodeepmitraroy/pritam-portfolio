@@ -3,13 +3,12 @@ import React, { FC } from 'react';
 import { motion } from 'motion/react';
 import AnimatedSection from '@/components/animated-section';
 import SectionHeader from '@/components/section-header';
-import { About} from '@/types/sanity.types';
+import { About } from '@/types/sanity.types';
 
 interface AboutSectionProps {
 	aboutData: About;
-
 }
-const AboutSection: FC<AboutSectionProps> = ({ aboutData, }) => {
+const AboutSection: FC<AboutSectionProps> = ({ aboutData }) => {
 	// const skills = [
 	// 	{
 	// 		name: 'Frontend',

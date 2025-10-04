@@ -20,18 +20,18 @@ const ExperienceCard: FC<ExperienceProps> = ({
 	return (
 		<motion.div
 			key={index}
-			className="mb-12"
+			className="mb-12 flex flex-col"
 			initial={{ opacity: 0, y: 30 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true }}
 			transition={{ duration: 0.5, delay: index * 0.1 }}
 		>
-			<h3 className="mb-1 text-xl font-bold text-gray-800">{jobTitle}</h3>
-			<p className="mb-1 text-gray-600">{company}</p>
-			<p className="mb-4 text-sm text-gray-500">
+			<h3 className="text-2xl font-bold text-gray-800">{jobTitle}</h3>
+			<span className="mt-4 text-lg text-gray-500">{company}</span>
+			<span className="mb-4 text-lg text-gray-500">
 				{timeRange ?? 'Present'}
-			</p>
-			<p className="leading-relaxed text-gray-700">{description}</p>
+			</span>
+			<p className="text-left leading-relaxed text-gray-700">{description}</p>
 		</motion.div>
 	);
 };

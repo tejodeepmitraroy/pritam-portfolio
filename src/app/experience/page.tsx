@@ -78,7 +78,7 @@ export default async function Experience() {
 				</motion.div>
 			</section> */}
 
-			<section className="mx-auto max-w-6xl px-6 py-8">
+			<section className="mx-auto max-w-5xl px-6 py-8 md:px-0">
 				<div className="grid gap-12 md:grid-cols-2">
 					{experienceData.map((exp, index) => (
 						<ExperienceCard
