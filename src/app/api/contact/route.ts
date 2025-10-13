@@ -1,21 +1,7 @@
+import { transporter } from '@/config/nodemailer';
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
-
-// Validate environment variables
-const requiredEnvVars = [
-	'EMAIL_SERVER_HOST',
-	'EMAIL_SERVER_PORT',
-	'EMAIL_SERVER_USER',
-	'EMAIL_SERVER_PASSWORD',
-	'EMAIL_FROM',
-	'EMAIL_TO',
-];
-
-for (const envVar of requiredEnvVars) {
-	if (!process.env[envVar]) {
-		console.error(`Missing required environment variable: ${envVar}`);
-	}
-}
+import { render } from '@react-email/components';
+import ContactEmail from '@/emails/ContactEmail';
 
 export async function POST(req: Request) {
 	try {
@@ -39,45 +25,20 @@ export async function POST(req: Request) {
 			);
 		}
 
-		// Create a test account for development
-		const testAccount = await nodemailer.createTestAccount();
-
-		// Create a transporter object using the default SMTP transport
-		const transporter = nodemailer.createTransport({
-			host: process.env.EMAIL_SERVER_HOST || 'smtp.ethereal.email',
-			port: parseInt(process.env.EMAIL_SERVER_PORT || '587'),
-			secure: process.env.EMAIL_SERVER_SECURE === 'true',
-			auth: {
-				user: process.env.EMAIL_SERVER_USER || testAccount.user,
-				pass: process.env.EMAIL_SERVER_PASSWORD || testAccount.pass,
-			},
-		});
+		const emailHtml = await render(
+			await ContactEmail({ name, email, message })
+		);
 
 		// Send mail with defined transport object
 		const info = await transporter.sendMail({
-			from: `"${name}" <${process.env.EMAIL_FROM || email}>`,
-			to: process.env.EMAIL_TO || email, // Send to your email
+			from: `"${name}" <${process.env.SENDER_EMAIL}>`,
+			to: process.env.SENDER_EMAIL, // Send to your email
 			subject: `New Contact Form Submission from ${name}`,
-			text: `
-        Name: ${name}
-        Email: ${email}
-        Message: ${message}
-      `,
-			html: `
-        <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-          <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Message:</strong></p>
-          <p>${message.replace(/\n/g, '<br>')}</p>
-        </div>
-      `,
+			text: `${name} has submitted a new contact form submission from ${email}`,
+			html: emailHtml,
 		});
 
-		// Preview only available when sending through an Ethereal account
-		if (process.env.NODE_ENV === 'development') {
-			console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-		}
+		console.log('Message sent successfully:', info);
 
 		return NextResponse.json(
 			{ message: 'Message sent successfully' },

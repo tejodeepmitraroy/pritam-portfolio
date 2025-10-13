@@ -1,22 +1,13 @@
 'use client';
-
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import Navigation from '@/components/navigation/navigation';
-import { useTheme } from '@/context/theme-context';
-import CustomCursor from '@/components/custom-cursor';
+
 import ContactForm from '@/components/contact-form';
+import PageTitle from '@/components/page-title';
+import Footer from '@/components/navigation/Footer';
+import WritingCard from '@/components/page/writings/WritingCard';
 
 export default function Writing() {
-	const [mounted, setMounted] = useState(false);
-	const { theme } = useTheme();
-	const isLight = theme === 'light';
-
-	useEffect(() => {
-		setMounted(true);
-	}, []);
-
 	const articles = [
 		{
 			title: 'Our illustration process',
@@ -68,109 +59,21 @@ export default function Writing() {
 		},
 	];
 
-	if (!mounted) return null;
-
 	return (
-		<div
-			className={`min-h-screen ${isLight ? 'bg-gray-100' : 'bg-black'} overflow-hidden`}
-		>
-			<CustomCursor />
-
+		<div className="min-h-screen overflow-hidden">
 			<Navigation />
+			<PageTitle title="Writing" />
 
-			<section className="mx-auto flex max-w-4xl flex-col items-center px-6 pt-16 pb-12 text-center">
-				<motion.div
-					className={`mb-6 text-8xl leading-none font-bold tracking-tight ${
-						isLight ? 'text-[#2563EB]' : 'text-[#d4ff00]'
-					}`}
-					initial={{ opacity: 0, y: -30 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8 }}
-				>
-					WRITING
-				</motion.div>
-				<motion.div
-					initial={{ opacity: 0, scale: 0 }}
-					animate={{ opacity: 1, scale: 1 }}
-					transition={{ delay: 0.5, duration: 0.5 }}
-				>
-					<svg
-						width="40"
-						height="40"
-						viewBox="0 0 40 40"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							d="M20 0L23.5 16.5H40L26.5 26.5L30 40L20 30L10 40L13.5 26.5L0 16.5H16.5L20 0Z"
-							fill={isLight ? '#2563EB' : '#d4ff00'}
-						/>
-					</svg>
-				</motion.div>
-			</section>
-
-			<section className="mx-auto max-w-6xl px-6 py-8">
-				<div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-					{articles.map((article, index) => (
-						<motion.div
-							key={index}
-							className={`rounded-lg p-6 ${isLight ? 'bg-white shadow-md' : 'bg-[#d4ff00]/10'}`}
-							initial={{ opacity: 0, y: 30 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.5, delay: index * 0.1 }}
-							whileHover={{ y: -5 }}
-						>
-							<div className="mb-2 flex items-center space-x-2">
-								<span
-									className={`rounded-full px-2 py-1 text-xs ${
-										isLight
-											? 'bg-[#2563EB]/10 text-[#2563EB]'
-											: 'bg-[#d4ff00]/20 text-[#d4ff00]'
-									}`}
-								>
-									{article.category}
-								</span>
-								<span
-									className={`text-xs ${isLight ? 'text-gray-500' : 'text-white/70'}`}
-								>
-									{article.date}
-								</span>
-							</div>
-							<h3
-								className={`mb-2 text-xl font-bold ${!isLight && 'text-[#d4ff00]'}`}
-							>
-								{article.title}
-							</h3>
-							<p
-								className={`mb-4 ${isLight ? 'text-gray-600' : 'text-white/80'}`}
-							>
-								{article.excerpt}
-							</p>
-							<div className="flex items-center justify-between">
-								<span
-									className={`text-xs ${isLight ? 'text-gray-500' : 'text-white/70'}`}
-								>
-									{article.readTime}
-								</span>
-								<Link
-									href="#"
-									className={`text-sm font-medium ${isLight ? 'text-[#2563EB]' : 'text-[#d4ff00]'} hover:underline`}
-								>
-									Read Article
-								</Link>
-							</div>
-						</motion.div>
-					))}
-				</div>
+			<section className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-6 py-8 md:grid-cols-2">
+				{articles.map((article, index) => (
+					<WritingCard key={index} article={article} index={index} />
+				))}
 			</section>
 
 			<section className="mx-auto max-w-6xl px-6 py-8">
 				<div className="flex justify-center">
 					<motion.button
-						className={`rounded-md px-6 py-3 font-medium ${
-							isLight ? 'bg-[#2563EB] text-white' : 'bg-[#d4ff00] text-black'
-						}`}
+						className={`rounded-md bg-[#2563EB] px-6 py-3 font-medium text-white`}
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 					>
@@ -182,35 +85,7 @@ export default function Writing() {
 			{/* Contact Form */}
 			<ContactForm />
 
-			<footer
-				className={`${isLight ? 'bg-[#2563EB]/10' : 'bg-[#d4ff00]/10'} mt-12 overflow-hidden py-8`}
-			>
-				<motion.div
-					className={`flex space-x-8 ${
-						isLight ? 'text-[#2563EB]' : 'text-[#d4ff00]'
-					} text-4xl font-bold whitespace-nowrap opacity-30`}
-					animate={{
-						x: [0, -1000],
-						transition: {
-							x: {
-								repeat: Number.POSITIVE_INFINITY,
-								repeatType: 'loop',
-								duration: 20,
-								ease: 'linear',
-							},
-						},
-					}}
-				>
-					<div>PORTFOLIO</div>
-					<div>TWITTER</div>
-					<div>LINKEDIN</div>
-					<div>BEHANCE</div>
-					<div>PORTFOLIO</div>
-					<div>TWITTER</div>
-					<div>LINKEDIN</div>
-					<div>BEHANCE</div>
-				</motion.div>
-			</footer>
+			<Footer />
 		</div>
 	);
 }

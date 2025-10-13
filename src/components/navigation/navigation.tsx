@@ -24,7 +24,7 @@ export default function Navigation() {
 						className="text-gray-700 dark:text-white"
 					/>
 					<Link href="/">
-						<div className="text-xl font-light">PM</div>
+						<div className="font-dancing-script text-3xl">PM</div>
 					</Link>
 					<div className="flex items-center space-x-4">
 						<ModeToggle />
