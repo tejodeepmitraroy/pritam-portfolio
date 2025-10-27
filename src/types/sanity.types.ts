@@ -13,6 +13,442 @@
  */
 
 // Source: schema.json
+export type ServicePage = {
+	_id: string;
+	_type: 'servicePage';
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
+	heroSection?: {
+		h1Headline?: string;
+		subHeadline?: string;
+		ctaPrimary?: {
+			text?: string;
+			link?: string;
+		};
+		ctaSecondary?: {
+			text?: string;
+			link?: string;
+		};
+		backgroundVideo?: {
+			asset?: {
+				_ref: string;
+				_type: 'reference';
+				_weak?: boolean;
+				[internalGroqTypeReferenceTo]?: 'sanity.fileAsset';
+			};
+			media?: unknown;
+			_type: 'file';
+		};
+		heroImage?: {
+			asset?: {
+				_ref: string;
+				_type: 'reference';
+				_weak?: boolean;
+				[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+			};
+			media?: unknown;
+			hotspot?: SanityImageHotspot;
+			crop?: SanityImageCrop;
+			alt?: string;
+			_type: 'image';
+		};
+		localTrustElement?: string;
+	};
+	problemSolutionBlock?: {
+		headlineH2?: string;
+		problemPoints?: Array<string>;
+		solutionPoints?: Array<string>;
+		ctaButton?: {
+			text?: string;
+			link?: string;
+		};
+	};
+	featuresBlock?: {
+		headlineH2?: string;
+		features?: Array<{
+			icon?: string;
+			title?: string;
+			subtitle?: string;
+			_key: string;
+		}>;
+		ctaButton?: {
+			text?: string;
+			link?: string;
+		};
+	};
+	pricing?: {
+		sectionHeadingH2?: string;
+		sectionSubHeading?: string;
+		pricingPlans?: Array<{
+			packageName?: string;
+			targetAudience?: string;
+			currentPrice?: string;
+			previousPrice?: string;
+			whatsIncluded?: Array<string>;
+			offer?: string;
+			ctaText?: string;
+			ctaLink?: string;
+			popular?: boolean;
+			_key: string;
+		}>;
+		ctaButton?: {
+			text?: string;
+			link?: string;
+		};
+	};
+	howItWorks?: {
+		sectionHeading?: string;
+		steps?: Array<{
+			stepNumber?: number;
+			stepTitle?: string;
+			stepDescription?: string;
+			icon?: {
+				asset?: {
+					_ref: string;
+					_type: 'reference';
+					_weak?: boolean;
+					[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+				};
+				media?: unknown;
+				hotspot?: SanityImageHotspot;
+				crop?: SanityImageCrop;
+				_type: 'image';
+			};
+			_key: string;
+		}>;
+		ctaButton?: {
+			text?: string;
+			link?: string;
+		};
+	};
+	portfolio?: {
+		sectionHeading?: string;
+		portfolioItems?: Array<{
+			videoEmbedUrl?: string;
+			thumbnail?: {
+				asset?: {
+					_ref: string;
+					_type: 'reference';
+					_weak?: boolean;
+					[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+				};
+				media?: unknown;
+				hotspot?: SanityImageHotspot;
+				crop?: SanityImageCrop;
+				alt?: string;
+				_type: 'image';
+			};
+			caption?: string;
+			_key: string;
+		}>;
+		ctaButton?: {
+			text?: string;
+			link?: string;
+		};
+	};
+	whyChooseUs?: {
+		sectionHeadingH2?: string;
+		uspBullets?: Array<string>;
+		socialProofRating?: string;
+		clientLogos?: Array<{
+			asset?: {
+				_ref: string;
+				_type: 'reference';
+				_weak?: boolean;
+				[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+			};
+			media?: unknown;
+			hotspot?: SanityImageHotspot;
+			crop?: SanityImageCrop;
+			alt?: string;
+			_type: 'image';
+			_key: string;
+		}>;
+		ctaButton?: {
+			text?: string;
+			link?: string;
+		};
+	};
+	testimonials?: {
+		sectionHeading?: string;
+		testimonialsList?: Array<{
+			clientName?: string;
+			role?: string;
+			clientImage?: {
+				asset?: {
+					_ref: string;
+					_type: 'reference';
+					_weak?: boolean;
+					[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+				};
+				media?: unknown;
+				hotspot?: SanityImageHotspot;
+				crop?: SanityImageCrop;
+				_type: 'image';
+			};
+			quote?: string;
+			rating?: number;
+			_key: string;
+		}>;
+		ctaButton?: {
+			text?: string;
+			link?: string;
+		};
+	};
+	servicesOffered?: {
+		sectionHeadingH2?: string;
+		services?: Array<{
+			icon?: string;
+			title?: string;
+			description?: string;
+			_key: string;
+		}>;
+	};
+	faqSection?: {
+		faqs?: Array<{
+			question?: string;
+			answer?: string;
+			_key: string;
+		}>;
+		ctaButton?: {
+			text?: string;
+			link?: string;
+		};
+	};
+	finalCta?: {
+		headline?: string;
+		subHeadline?: string;
+		ctaButtons?: Array<{
+			text?: string;
+			link?: string;
+			style?: 'primary' | 'secondary' | 'outline';
+			_key: string;
+		}>;
+	};
+};
+
+export type Gmb = {
+	_id: string;
+	_type: 'gmb';
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
+	heroSection?: {
+		h1Headline?: string;
+		subHeadline?: string;
+		ctaPrimary?: {
+			text?: string;
+			link?: string;
+		};
+		ctaSecondary?: {
+			text?: string;
+			link?: string;
+		};
+		backgroundVideo?: {
+			asset?: {
+				_ref: string;
+				_type: 'reference';
+				_weak?: boolean;
+				[internalGroqTypeReferenceTo]?: 'sanity.fileAsset';
+			};
+			media?: unknown;
+			_type: 'file';
+		};
+		heroImage?: {
+			asset?: {
+				_ref: string;
+				_type: 'reference';
+				_weak?: boolean;
+				[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+			};
+			media?: unknown;
+			hotspot?: SanityImageHotspot;
+			crop?: SanityImageCrop;
+			alt?: string;
+			_type: 'image';
+		};
+		localTrustElement?: string;
+	};
+	problemSolutionBlock?: {
+		headlineH2?: string;
+		problemPoints?: Array<string>;
+		solutionPoints?: Array<string>;
+	};
+	whyChooseUs?: {
+		sectionHeadingH2?: string;
+		uspBullets?: Array<string>;
+		socialProofRating?: string;
+		clientLogos?: Array<{
+			asset?: {
+				_ref: string;
+				_type: 'reference';
+				_weak?: boolean;
+				[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+			};
+			media?: unknown;
+			hotspot?: SanityImageHotspot;
+			crop?: SanityImageCrop;
+			alt?: string;
+			_type: 'image';
+			_key: string;
+		}>;
+		ctaText?: string;
+		ctaLink?: string;
+		blogHeadingH2?: string;
+		blogIntro?: string;
+		benefits?: Array<{
+			title?: string;
+			description?: string;
+			_key: string;
+		}>;
+		closingCtaLine?: string;
+	};
+	servicesOffered?: {
+		sectionHeadingH2?: string;
+		services?: Array<{
+			icon?: string;
+			title?: string;
+			description?: string;
+			_key: string;
+		}>;
+	};
+	portfolio?: {
+		sectionHeading?: string;
+		portfolioItems?: Array<{
+			videoEmbedUrl?: string;
+			thumbnail?: {
+				asset?: {
+					_ref: string;
+					_type: 'reference';
+					_weak?: boolean;
+					[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+				};
+				media?: unknown;
+				hotspot?: SanityImageHotspot;
+				crop?: SanityImageCrop;
+				alt?: string;
+				_type: 'image';
+			};
+			caption?: string;
+			_key: string;
+		}>;
+		additionalContentHeading?: string;
+		additionalContent?: string;
+		additionalContentImage?: {
+			asset?: {
+				_ref: string;
+				_type: 'reference';
+				_weak?: boolean;
+				[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+			};
+			media?: unknown;
+			hotspot?: SanityImageHotspot;
+			crop?: SanityImageCrop;
+			alt?: string;
+			_type: 'image';
+		};
+	};
+	pricing?: {
+		sectionHeadingH2?: string;
+		pricingPlans?: Array<{
+			packageName?: string;
+			targetAudience?: string;
+			price?: string;
+			whatsIncluded?: Array<string>;
+			offer?: string;
+			ctaText?: string;
+			ctaLink?: string;
+			_key: string;
+		}>;
+		postPricingBlogHeading?: string;
+		postPricingBlogContent?: string;
+	};
+	serviceCoverage?: {
+		sectionHeadingH2?: string;
+		coverageType?: 'list' | 'paragraph';
+		coverageAreas?: Array<{
+			areaName?: string;
+			description?: string;
+			_key: string;
+		}>;
+		coverageParagraph?: string;
+	};
+	howItWorks?: {
+		sectionHeading?: string;
+		steps?: Array<{
+			stepNumber?: number;
+			stepTitle?: string;
+			stepDescription?: string;
+			icon?: {
+				asset?: {
+					_ref: string;
+					_type: 'reference';
+					_weak?: boolean;
+					[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+				};
+				media?: unknown;
+				hotspot?: SanityImageHotspot;
+				crop?: SanityImageCrop;
+				_type: 'image';
+			};
+			_key: string;
+		}>;
+	};
+	faqSection?: {
+		faqs?: Array<{
+			question?: string;
+			answer?: string;
+			_key: string;
+		}>;
+	};
+	testimonials?: {
+		sectionHeading?: string;
+		testimonialsList?: Array<{
+			clientName?: string;
+			clientLocation?: string;
+			clientImage?: {
+				asset?: {
+					_ref: string;
+					_type: 'reference';
+					_weak?: boolean;
+					[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+				};
+				media?: unknown;
+				hotspot?: SanityImageHotspot;
+				crop?: SanityImageCrop;
+				_type: 'image';
+			};
+			quote?: string;
+			rating?: number;
+			_key: string;
+		}>;
+	};
+	finalCta?: {
+		headline?: string;
+		ctaButtons?: Array<{
+			text?: string;
+			link?: string;
+			style?: 'primary' | 'secondary' | 'outline';
+			_key: string;
+		}>;
+	};
+	footer?: {
+		businessName?: string;
+		address?: string;
+		phone?: string;
+		email?: string;
+		whatsappNumber?: string;
+		googleMapEmbedUrl?: string;
+		seoLine?: string;
+		socialLinks?: Array<{
+			platform?: string;
+			url?: string;
+			_key: string;
+		}>;
+	};
+};
+
 export type About = {
 	_id: string;
 	_type: 'about';
@@ -397,6 +833,89 @@ export type BasicInfo = {
 	location?: string;
 };
 
+export type MetaTag = {
+	_type: 'metaTag';
+	metaAttributes?: Array<
+		{
+			_key: string;
+		} & MetaAttribute
+	>;
+};
+
+export type MetaAttribute = {
+	_type: 'metaAttribute';
+	attributeKey?: string;
+	attributeType?: 'string' | 'image';
+	attributeValueImage?: {
+		asset?: {
+			_ref: string;
+			_type: 'reference';
+			_weak?: boolean;
+			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+		};
+		media?: unknown;
+		hotspot?: SanityImageHotspot;
+		crop?: SanityImageCrop;
+		_type: 'image';
+	};
+	attributeValueString?: string;
+};
+
+export type SeoMetaFields = {
+	_type: 'seoMetaFields';
+	nofollowAttributes?: boolean;
+	metaTitle?: string;
+	metaDescription?: string;
+	metaImage?: {
+		asset?: {
+			_ref: string;
+			_type: 'reference';
+			_weak?: boolean;
+			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+		};
+		media?: unknown;
+		hotspot?: SanityImageHotspot;
+		crop?: SanityImageCrop;
+		_type: 'image';
+	};
+	seoKeywords?: Array<string>;
+	openGraph?: OpenGraph;
+	additionalMetaTags?: Array<
+		{
+			_key: string;
+		} & MetaTag
+	>;
+	twitter?: Twitter;
+};
+
+export type Twitter = {
+	_type: 'twitter';
+	cardType?: string;
+	creator?: string;
+	site?: string;
+	handle?: string;
+};
+
+export type OpenGraph = {
+	_type: 'openGraph';
+	url?: string;
+	image?: {
+		asset?: {
+			_ref: string;
+			_type: 'reference';
+			_weak?: boolean;
+			[internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+		};
+		media?: unknown;
+		hotspot?: SanityImageHotspot;
+		crop?: SanityImageCrop;
+		_type: 'image';
+	};
+	title?: string;
+	description?: string;
+	siteName?: string;
+};
+
 export type MediaTag = {
 	_id: string;
 	_type: 'media.tag';
@@ -525,6 +1044,8 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+	| ServicePage
+	| Gmb
 	| About
 	| Enquiry
 	| TermsConditions
@@ -538,6 +1059,11 @@ export type AllSanitySchemaTypes =
 	| SocialLinks
 	| Experience
 	| BasicInfo
+	| MetaTag
+	| MetaAttribute
+	| SeoMetaFields
+	| Twitter
+	| OpenGraph
 	| MediaTag
 	| SanityImagePaletteSwatch
 	| SanityImagePalette

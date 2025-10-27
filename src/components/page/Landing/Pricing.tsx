@@ -1,24 +1,32 @@
 import React from 'react';
-import { motion } from 'motion/react';
 import { Check } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import LandingPageHeader from '@/components/LandingPageHeader';
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from '@/components/ui/card';
 
 const Pricing = () => {
-	const fadeInUp = {
-		hidden: { opacity: 0, y: 20 },
-		visible: { opacity: 1, y: 0 },
-	};
+	// const fadeInUp = {
+	// 	hidden: { opacity: 0, y: 20 },
+	// 	visible: { opacity: 1, y: 0 },
+	// };
 
-	const staggerContainer = {
-		hidden: { opacity: 0 },
-		visible: {
-			opacity: 1,
-			transition: {
-				staggerChildren: 0.1,
-			},
-		},
-	};
+	// const staggerContainer = {
+	// 	hidden: { opacity: 0 },
+	// 	visible: {
+	// 		opacity: 1,
+	// 		transition: {
+	// 			staggerChildren: 0.1,
+	// 		},
+	// 	},
+	// };
 
 	const pricingPlans = [
 		{
@@ -73,105 +81,126 @@ const Pricing = () => {
 			popular: false,
 		},
 	];
-	const whatsappNumber = '1234567890'; // Replace with actual WhatsApp number
-	const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hi! I'm interested in your YouTube video editing services.`;
 
 	return (
 		<section
 			id="pricing"
 			className="px-6 py-20 dark:from-gray-800 dark:to-blue-900/20"
 		>
+			<LandingPageHeader title="🎁 Plans Designed for Every Creator" />
 			<div className="mx-auto max-w-7xl">
-				<motion.div
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: true }}
-					variants={staggerContainer}
-				>
-					<motion.div className="mb-16 text-center" variants={fadeInUp}>
-						<h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-5xl dark:text-white">
-							🎁 Plans Designed for Every Creator
-						</h2>
-						<p className="text-xl text-gray-600 dark:text-gray-400">
-							Limited-time bonus: Free intro animation + strategy call
-						</p>
-					</motion.div>
-
+				<div>
 					<div className="grid gap-8 md:grid-cols-3">
 						{pricingPlans.map((plan, index) => (
-							<motion.div
+							<PricingCard
 								key={index}
-								className={`relative rounded-2xl p-8 ${
-									plan.popular
-										? 'scale-105 bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-2xl'
-										: 'border-2 border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800'
-								}`}
-								variants={fadeInUp}
-							>
-								{plan.popular && (
-									<div className="absolute -top-4 left-1/2 -translate-x-1/2 transform rounded-full bg-yellow-400 px-4 py-1 text-sm font-bold text-gray-900">
-										BEST SELLER
-									</div>
-								)}
-
-								<h3
-									className={`mb-2 text-2xl font-bold ${plan.popular ? 'text-white' : 'text-gray-900 dark:text-white'}`}
-								>
-									{plan.name}
-								</h3>
-								<p
-									className={`mb-4 text-sm ${plan.popular ? 'text-white/80' : 'text-gray-600 dark:text-gray-400'}`}
-								>
-									{plan.description}
-								</p>
-								<div className="mb-6">
-									<span className="text-4xl font-bold">{plan.price}</span>
-									<span
-										className={`text-lg ${plan.popular ? 'text-white/80' : 'text-gray-600 dark:text-gray-400'}`}
-									>
-										{' / '}
-										{plan.priceINR}
-									</span>
-								</div>
-
-								<ul className="mb-8 space-y-3">
-									{plan.features.map((feature, idx) => (
-										<li key={idx} className="flex items-start">
-											<Check
-												className={`mt-0.5 mr-2 h-5 w-5 flex-shrink-0 ${plan.popular ? 'text-white' : 'text-green-500'}`}
-											/>
-											<span
-												className={
-													plan.popular
-														? 'text-white/90'
-														: 'text-gray-700 dark:text-gray-300'
-												}
-											>
-												{feature}
-											</span>
-										</li>
-									))}
-								</ul>
-
-								<Link href={whatsappLink} target="_blank">
-									<Button
-										size="lg"
-										className={`w-full ${
-											plan.popular
-												? 'bg-white text-blue-600 hover:bg-gray-100'
-												: 'bg-blue-600 text-white hover:bg-blue-700'
-										}`}
-									>
-										{plan.cta}
-									</Button>
-								</Link>
-							</motion.div>
+								planName={plan.name}
+								planDescription={plan.description}
+								popular={plan.popular}
+								price={plan.price}
+								priceINR={plan.priceINR}
+								features={plan.features}
+								cta={plan.cta}
+							/>
 						))}
 					</div>
-				</motion.div>
+				</div>
 			</div>
+			{/* <CTA/> */}
 		</section>
 	);
 };
 
 export default Pricing;
+
+export const PricingCard = ({
+	planName,
+	planDescription,
+	popular,
+	price,
+	priceINR,
+	features,
+	cta,
+}: {
+	planName: string;
+	planDescription: string;
+	popular: boolean;
+	price: string;
+	priceINR: string;
+	features: string[];
+	cta: string;
+}) => {
+	const whatsappNumber = '1234567890'; // Replace with actual WhatsApp number
+	const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hi! I'm interested in your YouTube video editing services.`;
+	return (
+		<Card
+			className={`relative rounded-2xl py-8 ${
+				popular
+					? 'scale-105 bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-2xl'
+					: 'border-2 border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900'
+			}`}
+		>
+			<CardHeader className="gap-0">
+				<CardTitle>
+					{popular && (
+						<div className="absolute -top-4 left-1/2 -translate-x-1/2 transform rounded-full bg-yellow-400 px-4 py-1 text-sm font-bold text-gray-900">
+							BEST SELLER
+						</div>
+					)}
+
+					<h3
+						className={`text-center text-4xl font-bold ${popular ? 'text-white' : 'text-gray-900 dark:text-white'}`}
+					>
+						{planName}
+					</h3>
+				</CardTitle>
+				<CardDescription
+					className={`mb-4 text-center text-base ${popular ? 'text-white/80' : 'text-gray-600 dark:text-gray-400'}`}
+				>
+					{planDescription}
+				</CardDescription>
+
+				<div className="flex items-center justify-center gap-3">
+					<span className="text-4xl font-bold text-white">{price}</span>
+					<span
+						className={`text-lg ${popular ? 'text-white/80' : 'text-gray-600 dark:text-gray-400'}`}
+					>
+						{' / '}
+						{priceINR}
+					</span>
+				</div>
+			</CardHeader>
+			<CardContent className="h-full px-10">
+				<ul className="mb-8 space-y-3">
+					{features.map((feature, idx) => (
+						<li key={idx} className="flex items-start">
+							<Check
+								className={`mt-0.5 mr-2 h-5 w-5 flex-shrink-0 ${popular ? 'text-white' : 'text-green-500'}`}
+							/>
+							<span
+								className={
+									popular ? 'text-white/90' : 'text-gray-700 dark:text-gray-300'
+								}
+							>
+								{feature}
+							</span>
+						</li>
+					))}
+				</ul>
+			</CardContent>
+			<CardFooter>
+				<Link href={whatsappLink} target="_blank" className="w-full">
+					<Button
+						className={`w-full p-7 text-xl font-bold transition-all duration-300 ease-in-out ${
+							popular
+								? 'bg-white text-blue-600 hover:bg-blue-700 hover:text-white'
+								: 'bg-blue-600 text-white hover:bg-blue-700'
+						}`}
+					>
+						{cta}
+					</Button>
+				</Link>
+			</CardFooter>
+		</Card>
+	);
+};

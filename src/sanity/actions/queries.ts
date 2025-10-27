@@ -34,8 +34,10 @@ export const SKILLS_QUERY = defineQuery(`*[_type == "skills"]{
   sequence,
   subtitle
 }`);
+export const SERVICE_PAGE_QUERY = defineQuery(`*[_type == "servicePage"][0]`);
 
 //services Query
+
 export const SERVICES_QUERY = defineQuery(`*[_type == "services"]{
   _id,
   _type,

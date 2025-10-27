@@ -15,6 +15,7 @@ import {
 	ALL_EXPERIENCE_QUERY,
 	EXPERIENCE_BY_ID_QUERY,
 	SERVICES_QUERY,
+	SERVICE_PAGE_QUERY,
 } from './queries';
 import {
 	About,
@@ -23,6 +24,7 @@ import {
 	PrivacyPolicy,
 	Projects,
 	RefundPolicy,
+	ServicePage,
 	Services,
 	Skills,
 	SocialLinks,
@@ -43,6 +45,11 @@ export const getSocialLinks = async () =>
 export const getSkills = async () =>
 	await sanityFetch<Skills[]>({
 		query: SKILLS_QUERY,
+	});
+
+export const getServicePage = async () =>
+	await sanityFetch<ServicePage>({
+		query: SERVICE_PAGE_QUERY,
 	});
 
 //Experience

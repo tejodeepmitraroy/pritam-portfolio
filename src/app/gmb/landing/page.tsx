@@ -84,7 +84,6 @@ const LandingPage = () => {
 	// ];
 
 	return (
-		// <div className="min-h-screen overflow-hidden bg-white dark:bg-gray-900">
 		<div className="dark min-h-screen overflow-hidden bg-[#0c0c0c]">
 			<Hero />
 			<Problems />

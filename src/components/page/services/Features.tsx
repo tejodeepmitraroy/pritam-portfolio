@@ -1,46 +1,44 @@
-import React, { ReactNode } from 'react';
+'use client';
+import React, { FC, ReactNode } from 'react';
 import { motion } from 'motion/react';
-import {
-	Sparkles,
-	TrendingUp,
-	Star,
-	Zap,
-	Clock,
-	ArrowRight,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import LandingPageHeader from '@/components/LandingPageHeader';
+import { ServicePage } from '@/types/sanity.types';
 
-const features = [
-	{
-		icon: <Sparkles className="h-6 w-6" />,
-		title: 'Engaging Storytelling Edits',
-		benefit: 'Higher watch time & retention',
-	},
-	{
-		icon: <TrendingUp className="h-6 w-6" />,
-		title: 'Captions & Graphics',
-		benefit: 'Professional polish that stands out',
-	},
-	{
-		icon: <Star className="h-6 w-6" />,
-		title: 'Custom Thumbnails',
-		benefit: 'More clicks & higher CTR',
-	},
-	{
-		icon: <Zap className="h-6 w-6" />,
-		title: 'SEO-Friendly Titles & Hooks',
-		benefit: 'Better discoverability',
-	},
-	{
-		icon: <Clock className="h-6 w-6" />,
-		title: '48–72 hr Delivery',
-		benefit: 'Consistency without stress',
-	},
-];
+// const features = [
+// 	{
+// 		icon: <Sparkles className="h-6 w-6" />,
+// 		title: 'Engaging Storytelling Edits',
+// 		benefit: 'Higher watch time & retention',
+// 	},
+// 	{
+// 		icon: <TrendingUp className="h-6 w-6" />,
+// 		title: 'Captions & Graphics',
+// 		benefit: 'Professional polish that stands out',
+// 	},
+// 	{
+// 		icon: <Star className="h-6 w-6" />,
+// 		title: 'Custom Thumbnails',
+// 		benefit: 'More clicks & higher CTR',
+// 	},
+// 	{
+// 		icon: <Zap className="h-6 w-6" />,
+// 		title: 'SEO-Friendly Titles & Hooks',
+// 		benefit: 'Better discoverability',
+// 	},
+// 	{
+// 		icon: <Clock className="h-6 w-6" />,
+// 		title: '48-72 hr Delivery',
+// 		benefit: 'Consistency without stress',
+// 	},
+// ];
 
-const Features = () => {
+interface FeaturesProps {
+	featureData: ServicePage['featuresBlock'];
+}
+const Features: FC<FeaturesProps> = ({ featureData }) => {
 	// const fadeInUp = {
 	// 	hidden: { opacity: 0, y: 20 },
 	// 	visible: { opacity: 1, y: 0 },
@@ -56,29 +54,30 @@ const Features = () => {
 	// 	},
 	// };
 
+	console.log('featureData', featureData);
 	return (
 		<section className="w-full px-6 py-20">
 			<div className="mx-auto max-w-7xl">
-				<LandingPageHeader title="What Makes Our Editing Out" />
+				<LandingPageHeader title={featureData?.headlineH2 || ''} />
 				<div>
 					<div className="mb-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-						{features.map((feature) => (
+						{featureData?.features?.map((feature) => (
 							<FeatureCard
 								key={feature.title}
-								title={feature.title}
-								icon={feature.icon}
-								benefit={feature.benefit}
+								title={feature.title || ''}
+								icon={feature.icon || ''}
+								benefit={feature.subtitle || ''}
 							/>
 						))}
 					</div>
 
 					<div className="text-center">
-						<Link href={''} target="_blank">
+						<Link href={featureData?.ctaButton?.link || '#'} target="_blank">
 							<Button
 								size="lg"
 								className="bg-purple-600 text-white hover:bg-purple-700"
 							>
-								Start Your First Video Today
+								{featureData?.ctaButton?.text}
 								<ArrowRight className="ml-2" />
 							</Button>
 						</Link>

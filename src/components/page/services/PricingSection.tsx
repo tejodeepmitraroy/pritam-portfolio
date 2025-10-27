@@ -1,8 +1,16 @@
 'use client';
 import React from 'react';
 import { motion } from 'motion/react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Check } from 'lucide-react';
+import { FC } from 'react';
+import { ServicePage } from '@/types/sanity.types';
 
-const HowItWorks = () => {
+interface PricingSectionProps {
+	pricingSectionData: ServicePage['pricing'];
+}
+const PricingSection: FC<PricingSectionProps> = ({ pricingSectionData }) => {
 	// const whatsappNumber = '1234567890'; // Replace with actual WhatsApp number
 	// const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hi! I'm interested in your YouTube video editing services.`;
 
@@ -21,29 +29,59 @@ const HowItWorks = () => {
 		},
 	};
 
-	// const workProcess = [
+	console.log(pricingSectionData);
+
+	// const pricingPlans = [
 	// 	{
-	// 		step: '1',
-	// 		title: 'Share Your Raw Footage',
-	// 		description:
-	// 			'Upload your video files via Google Drive, Dropbox, or any preferred method.',
+	// 		name: 'Starter',
+	// 		price: '$99',
+	// 		priceINR: '₹8,000',
+	// 		description: 'Perfect for beginners',
+	// 		features: [
+	// 			'2 videos per month',
+	// 			'Basic edits & transitions',
+	// 			'Captions & subtitles',
+	// 			'48-72 hr delivery',
+	// 			'1 revision round',
+	// 		],
+	// 		cta: 'Get Starter Plan',
+	// 		popular: false,
 	// 	},
 	// 	{
-	// 		step: '2',
-	// 		title: 'We Edit & Send Preview',
-	// 		description:
-	// 			'Our team crafts your video with professional edits within 48 hours.',
+	// 		name: 'Growth',
+	// 		price: '$349',
+	// 		priceINR: '₹28,000',
+	// 		description: 'Most popular for growing creators',
+	// 		features: [
+	// 			'8 videos per month',
+	// 			'Advanced edits & effects',
+	// 			'Captions & graphics',
+	// 			'Custom thumbnails',
+	// 			'48 hr delivery',
+	// 			'2 revision rounds',
+	// 			'Priority support',
+	// 		],
+	// 		cta: 'Get Growth Plan',
+	// 		popular: true,
 	// 	},
 	// 	{
-	// 		step: '3',
-	// 		title: 'Review & Request Changes',
-	// 		description:
-	// 			'Watch the preview and share your feedback for any adjustments.',
-	// 	},
-	// 	{
-	// 		step: '4',
-	// 		title: 'Final Delivery',
-	// 		description: 'Receive your polished video in full HD, ready to upload!',
+	// 		name: 'Pro',
+	// 		price: '$699',
+	// 		priceINR: '₹56,000',
+	// 		description: 'For professional creators',
+	// 		features: [
+	// 			'16 videos per month',
+	// 			'Premium edits & animations',
+	// 			'Advanced graphics & motion design',
+	// 			'Custom thumbnails & channel art',
+	// 			'SEO optimization',
+	// 			'24-48 hr delivery',
+	// 			'Unlimited revisions',
+	// 			'Dedicated editor',
+	// 			'Strategy consultation',
+	// 		],
+	// 		cta: 'Get Pro Plan',
+	// 		popular: false,
 	// 	},
 	// ];
 	return (
@@ -60,17 +98,17 @@ const HowItWorks = () => {
 				>
 					<motion.div className="mb-16 text-center" variants={fadeInUp}>
 						<h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-5xl dark:text-white">
-							🎁 Plans Designed for Every Creator
+							{pricingSectionData?.sectionHeadingH2}
 						</h2>
 						<p className="text-xl text-gray-600 dark:text-gray-400">
-							Limited-time bonus: Free intro animation + strategy call
+							{pricingSectionData?.sectionSubHeading}
 						</p>
 					</motion.div>
 
-					{/* <div className="grid gap-8 md:grid-cols-3">
-						{workProcess.map((plan, index) => (
+					<div className="grid gap-8 md:grid-cols-3">
+						{pricingSectionData?.pricingPlans?.map((plan) => (
 							<motion.div
-								key={index}
+								key={plan._key}
 								className={`relative rounded-2xl p-8 ${
 									plan.popular
 										? 'scale-105 bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-2xl'
@@ -87,25 +125,29 @@ const HowItWorks = () => {
 								<h3
 									className={`mb-2 text-2xl font-bold ${plan.popular ? 'text-white' : 'text-gray-900 dark:text-white'}`}
 								>
-									{plan.name}
+									{plan.packageName}
 								</h3>
 								<p
 									className={`mb-4 text-sm ${plan.popular ? 'text-white/80' : 'text-gray-600 dark:text-gray-400'}`}
 								>
-									{plan.description}
+									{plan.targetAudience}
 								</p>
 								<div className="mb-6">
-									<span className="text-4xl font-bold">{plan.price}</span>
-									<span
-										className={`text-lg ${plan.popular ? 'text-white/80' : 'text-gray-600 dark:text-gray-400'}`}
-									>
-										{' / '}
-										{plan.priceINR}
+									<span className="text-4xl font-bold">
+										{plan.currentPrice}
 									</span>
+									{plan.previousPrice! && (
+										<span
+											className={`text-lg ${plan.popular ? 'text-white/80' : 'text-gray-600 dark:text-gray-400'}`}
+										>
+											{' / '}
+											{plan.previousPrice}
+										</span>
+									)}
 								</div>
 
 								<ul className="mb-8 space-y-3">
-									{plan.features.map((feature, idx) => (
+									{plan.whatsIncluded?.map((feature, idx) => (
 										<li key={idx} className="flex items-start">
 											<Check
 												className={`mt-0.5 mr-2 h-5 w-5 flex-shrink-0 ${plan.popular ? 'text-white' : 'text-green-500'}`}
@@ -123,7 +165,7 @@ const HowItWorks = () => {
 									))}
 								</ul>
 
-								<Link href={whatsappLink} target="_blank">
+								<Link href={plan.ctaLink || '#'} target="_blank">
 									<Button
 										size="lg"
 										className={`w-full ${
@@ -132,16 +174,16 @@ const HowItWorks = () => {
 												: 'bg-blue-600 text-white hover:bg-blue-700'
 										}`}
 									>
-										{plan.cta}
+										{plan.ctaText}
 									</Button>
 								</Link>
 							</motion.div>
 						))}
-					</div> */}
+					</div>
 				</motion.div>
 			</div>
 		</section>
 	);
 };
 
-export default HowItWorks;
+export default PricingSection;
